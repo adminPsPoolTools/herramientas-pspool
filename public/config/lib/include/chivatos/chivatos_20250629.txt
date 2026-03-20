@@ -1,0 +1,27 @@
+19:44:13 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 10
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 450
+    [largoPiscina] => 950
+    [tipoLamina] => Policarbonato
+    [cliente] => 13002
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+

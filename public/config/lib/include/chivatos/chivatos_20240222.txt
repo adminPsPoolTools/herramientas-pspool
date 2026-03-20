@@ -1,0 +1,241 @@
+12:12:08 - Fuerza Final PC 75 #N# -> 559.65
+12:17:17 - Fuerza Final PC 75 #N# -> 617.76
+12:17:17 - Fuerza Final Resultado -> Array
+(
+    [OK] => 
+    [ERROR] => Ancho demasiado grande
+)
+
+12:17:17 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 600
+    [largoPiscina] => 1200
+    [tipoLamina] => Policarbonato
+    [cliente] => 12626
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR CLEAR
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+
+12:17:32 - Fuerza Final PC 75 #N# -> 514.8
+12:17:32 - Fuerza Final Resultado -> Array
+(
+    [OK] => 
+    [ERROR] => Ancho demasiado grande
+)
+
+12:17:32 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 600
+    [largoPiscina] => 1000
+    [tipoLamina] => Policarbonato
+    [cliente] => 12626
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR CLEAR
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+
+12:17:46 - Fuerza Final PC 75 #N# -> 471.9
+12:17:46 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 19391
+    [PRECIO] => 7888.104
+)
+
+12:17:46 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 550
+    [largoPiscina] => 1000
+    [tipoLamina] => Policarbonato
+    [cliente] => 12626
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR CLEAR
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+
+12:23:23 - Fuerza Final PC 75 #N# -> 148.59
+12:52:34 - Fuerza Final PC 75 #N# -> 374.4
+12:52:34 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 19389
+    [PRECIO] => 7225.077
+)
+
+12:52:34 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 7450
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR SILVER
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+
+12:53:10 - Fuerza Final PC 75 -> 296.875
+12:53:10 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 19389
+    [PRECIO] => 7225.077
+)
+
+12:53:10 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR CLEAR
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+
+12:59:10 - Fuerza Final PC 75 -> 296.875
+12:59:10 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 19389
+    [PRECIO] => 7225.077
+)
+
+12:59:10 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR CLEAR
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+
+13:00:47 - Fuerza Final PC 75 -> 296.875
+13:00:47 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 19389
+    [PRECIO] => 7225.077
+)
+
+13:00:47 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+

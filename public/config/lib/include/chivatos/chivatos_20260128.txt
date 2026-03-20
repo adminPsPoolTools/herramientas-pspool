@@ -1,0 +1,27 @@
+17:16:57 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 160
+    [tipoEscalera] => F
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 150
+    [anchoPiscina] => 400
+    [largoPiscina] => 800
+    [tipoLamina] => PVC
+    [cliente] => 14821
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 1
+    [escaleraRomana] => ROMANA
+    [colorLamina] => WHITE
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 700
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+

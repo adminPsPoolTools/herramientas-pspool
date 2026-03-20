@@ -1,0 +1,555 @@
+12:27:44 - Fuerza Final PC 75 -> 296.875
+12:27:44 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+12:27:44 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR BLUE
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+12:28:19 - Fuerza Final PC 75 -> 296.875
+12:28:19 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17616
+    [PRECIO] => 7355.636
+)
+
+12:28:19 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR BLUE
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+12:28:44 - Fuerza Final PC 75 -> 296.875
+12:28:44 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17616
+    [PRECIO] => 7355.636
+)
+
+12:28:44 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR BLUE
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+12:46:19 - Fuerza Final PC 75 -> 296.875
+12:46:19 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+12:46:19 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+12:52:13 - Fuerza Final PC 75 -> 296.875
+12:52:13 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+12:52:13 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+12:58:39 - Fuerza Final PC 75 -> 296.875
+12:58:39 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+12:58:39 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:29:33 - Fuerza Final PC 75 -> 296.875
+13:29:33 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+13:29:33 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:30:00 - Fuerza Final PC 75 -> 296.875
+13:30:00 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+13:30:00 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:33:09 - Fuerza Final PC 75 -> 296.875
+13:33:09 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17616
+    [PRECIO] => 7355.636
+)
+
+13:33:09 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => PVC
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => GRAY
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:36:27 - Fuerza Final PC 75 -> 296.875
+13:36:27 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17616
+    [PRECIO] => 7355.636
+)
+
+13:36:27 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:56:53 - Fuerza Final PC 75 -> 296.875
+13:56:53 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+13:56:53 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:57:36 - Fuerza Final PC 75 -> 296.875
+13:57:36 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+13:57:36 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:57:40 - Fuerza Final PC 75 -> 296.875
+13:57:40 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+13:57:40 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:58:22 - Fuerza Final PC 75 -> 296.875
+13:58:22 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+13:58:22 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+
+13:59:00 - Fuerza Final PC 75 -> 296.875
+13:59:00 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 17617
+    [PRECIO] => 7356.22
+)
+
+13:59:00 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 600
+    [tipoLamina] => PVC
+    [cliente] => 11406
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SAND
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => 
+    [tipoPiscina] => hormigon
+)
+

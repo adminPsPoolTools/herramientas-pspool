@@ -1,0 +1,118 @@
+13:31:13 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 25
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 300
+    [largoPiscina] => 500
+    [tipoLamina] => Policarbonato
+    [cliente] => 11809
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+14:52:16 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 300
+    [largoPiscina] => 500
+    [tipoLamina] => Policarbonato
+    [cliente] => 11809
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+17:37:46 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 165
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 350
+    [largoPiscina] => 1000
+    [tipoLamina] => PVC
+    [cliente] => 8997
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => WHITE
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+17:46:22 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 165
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 350
+    [largoPiscina] => 1450
+    [tipoLamina] => PVC
+    [cliente] => 8997
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => WHITE
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr><td><b>Nombre:</b></td><td>VIVIERE 1 a 11</td></tr>
+                    <tr><td><b>Email:</b></td><td></td></tr>
+                    <tr><td><b>Dirección:</b></td><td></td></tr>
+                    <tr><td><b>Población:</b></td><td></td></tr>
+                    <tr><td><b>Teléfono:</b></td><td></td></tr>
+                    <tr><td><b>Provincia:</b></td><td></td></tr>
+                    <tr><td><b>CP:</b></td><td></td></tr>
+                    <tr><td><b>País:</b></td><td></td></tr>
+                </table>
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+

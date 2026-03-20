@@ -1,0 +1,35 @@
+17:38:42 - Fuerza Final PC 75 -> 296.875
+17:38:42 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 19389
+    [PRECIO] => 7276.561
+)
+
+17:38:42 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-C
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => F
+    [sentidoEscalera] => S
+    [largoEscalera] => 140
+    [anchoEscalera] => 280
+    [anchoPiscina] => 500
+    [largoPiscina] => 1000
+    [tipoLamina] => PVC
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 1
+    [escaleraRomana] => ROMANA
+    [colorLamina] => WHITE
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+

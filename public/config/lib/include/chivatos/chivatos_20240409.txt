@@ -1,0 +1,35 @@
+09:09:11 - Fuerza Final PC 75 -> 296.875
+09:09:11 - Fuerza Final Resultado -> Array
+(
+    [OK] => 1
+    [ERROR] => 
+    [LONGITUD] => 1500
+    [CODIGO] => 19395
+    [PRECIO] => 7271.678
+)
+
+09:09:11 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DELTA-D
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 200
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 1000
+    [tipoLamina] => Policarbonato
+    [cliente] => 1
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR SILVER
+    [tipoInstalacion] => E
+    [provincia] => 
+    [importeInstalacion] => 
+    [datosClienteFinal] => 
+)
+

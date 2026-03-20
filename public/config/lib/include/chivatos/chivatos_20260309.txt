@@ -1,0 +1,101 @@
+15:25:40 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 385
+    [largoPiscina] => 692
+    [tipoLamina] => Policarbonato
+    [cliente] => 11434
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR BRONZE
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1000
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+15:36:06 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 385
+    [largoPiscina] => 692
+    [tipoLamina] => PVC
+    [cliente] => 11434
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => GRAY
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1530
+    [datosClienteFinal] => 
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr><td><b>Nombre:</b></td><td>JORGE</td></tr>
+                    <tr><td><b>Email:</b></td><td>info@guadalopepiscinas.com</td></tr>
+                    <tr><td><b>Dirección:</b></td><td></td></tr>
+                    <tr><td><b>Población:</b></td><td></td></tr>
+                    <tr><td><b>Teléfono:</b></td><td></td></tr>
+                    <tr><td><b>Provincia:</b></td><td></td></tr>
+                    <tr><td><b>CP:</b></td><td></td></tr>
+                    <tr><td><b>País:</b></td><td></td></tr>
+                </table>
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+15:36:47 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => DUO
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 130
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 384
+    [largoPiscina] => 692
+    [tipoLamina] => PVC
+    [cliente] => 11434
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => GRAY
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1530
+    [datosClienteFinal] => 
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr><td><b>Nombre:</b></td><td>JORGE</td></tr>
+                    <tr><td><b>Email:</b></td><td>info@guadalopepiscinas.com</td></tr>
+                    <tr><td><b>Dirección:</b></td><td></td></tr>
+                    <tr><td><b>Población:</b></td><td></td></tr>
+                    <tr><td><b>Teléfono:</b></td><td></td></tr>
+                    <tr><td><b>Provincia:</b></td><td></td></tr>
+                    <tr><td><b>CP:</b></td><td></td></tr>
+                    <tr><td><b>País:</b></td><td></td></tr>
+                </table>
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+

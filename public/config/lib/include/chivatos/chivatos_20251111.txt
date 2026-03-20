@@ -1,0 +1,192 @@
+06:49:48 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 1450
+    [tipoLamina] => Policarbonato
+    [cliente] => 4878
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => CRISTAL
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1280
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+06:50:49 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 1450
+    [tipoLamina] => PVC
+    [cliente] => 4878
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SAND
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1280
+    [datosClienteFinal] => 
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr><td><b>Nombre:</b></td><td>JAVIER MERINO </td></tr>
+                    <tr><td><b>Email:</b></td><td>javier@meryva.com</td></tr>
+                    <tr><td><b>Dirección:</b></td><td>C/Finlandia 19</td></tr>
+                    <tr><td><b>Población:</b></td><td>Sam Pedro de Alcantara</td></tr>
+                    <tr><td><b>Teléfono:</b></td><td>952799029</td></tr>
+                    <tr><td><b>Provincia:</b></td><td>MALAGA</td></tr>
+                    <tr><td><b>CP:</b></td><td>29670</td></tr>
+                    <tr><td><b>País:</b></td><td>España</td></tr>
+                </table>
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+06:52:24 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 1450
+    [tipoLamina] => PVC
+    [cliente] => 4878
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SAND
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1280
+    [datosClienteFinal] => 
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr><td><b>Nombre:</b></td><td>JAVIER MERINO </td></tr>
+                    <tr><td><b>Email:</b></td><td>javier@meryva.com</td></tr>
+                    <tr><td><b>Dirección:</b></td><td>C/Finlandia 19</td></tr>
+                    <tr><td><b>Población:</b></td><td>Sam Pedro de Alcantara</td></tr>
+                    <tr><td><b>Teléfono:</b></td><td>952799029</td></tr>
+                    <tr><td><b>Provincia:</b></td><td>MALAGA</td></tr>
+                    <tr><td><b>CP:</b></td><td>29670</td></tr>
+                    <tr><td><b>País:</b></td><td>España</td></tr>
+                </table>
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+06:52:46 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 1450
+    [tipoLamina] => PVC
+    [cliente] => 4878
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SAND
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1280
+    [datosClienteFinal] => 
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr><td><b>Nombre:</b></td><td>JAVIER MERINO </td></tr>
+                    <tr><td><b>Email:</b></td><td>javier@meryva.com</td></tr>
+                    <tr><td><b>Dirección:</b></td><td>C/Finlandia 19</td></tr>
+                    <tr><td><b>Población:</b></td><td>Sam Pedro de Alcantara</td></tr>
+                    <tr><td><b>Teléfono:</b></td><td>952799029</td></tr>
+                    <tr><td><b>Provincia:</b></td><td>MALAGA</td></tr>
+                    <tr><td><b>CP:</b></td><td>29670</td></tr>
+                    <tr><td><b>País:</b></td><td>España</td></tr>
+                </table>
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+17:34:42 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 200
+    [largoPiscina] => 620
+    [tipoLamina] => PVC
+    [cliente] => 8997
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => WHITE
+    [tipoInstalacion] => P
+    [provincia] => 
+    [importeInstalacion] => 1500
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+
+17:34:57 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => CAVE
+    [profundidadTapa] => 20
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 200
+    [largoPiscina] => 620
+    [tipoLamina] => PVC
+    [cliente] => 8997
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => WHITE
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 1500
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => hormigon
+)
+

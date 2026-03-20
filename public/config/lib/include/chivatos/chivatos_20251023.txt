@@ -1,0 +1,54 @@
+11:45:48 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 90
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 900
+    [tipoLamina] => Policarbonato
+    [cliente] => 10825
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR SILVER
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 0
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => liner
+)
+
+11:47:24 - Modelos\DatosPresupuesto Object
+(
+    [modelo] => S
+    [subtipo] => TOP
+    [profundidadTapa] => 100
+    [profundidadPiscina] => 150
+    [tipoEscalera] => D
+    [sentidoEscalera] => S
+    [largoEscalera] => 100
+    [anchoEscalera] => 100
+    [anchoPiscina] => 500
+    [largoPiscina] => 80
+    [tipoLamina] => Policarbonato
+    [cliente] => 10825
+    [conViga] => 1
+    [conTapa] => 1
+    [esRomana] => 
+    [escaleraRomana] => 
+    [colorLamina] => SOLAR SILVER
+    [tipoInstalacion] => N
+    [provincia] => 
+    [importeInstalacion] => 0
+    [datosClienteFinal] => 
+    [tipoTapa] => revestir
+    [tipoPiscina] => liner
+)
+

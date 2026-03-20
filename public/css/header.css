@@ -1,0 +1,115 @@
+
+.centrarheader  { position: relative; width: 1710px; margin: auto; padding: 0 30px; }
+
+	#cabecera {
+		position: fixed; z-index: 3090;
+		padding-top: 7px;
+		width: 100%; margin: 0;
+		height: auto;
+		background-color: rgba(255,255,255,0.9)
+	}
+	#cabecera #logo {
+		float: left;
+		margin-top: 4px; margin-bottom: 4px;
+		width: 240px;
+		-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease;
+	}
+	#cabecera #hoja {
+		float: right;
+		margin-top: 10px; margin-bottom: 4px;
+		width: 500px;
+		-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease;
+	}
+	
+	#cabecera a {  }
+
+	.menufijo {
+		background-color: rgba(42,18,96,0.9) !important;
+		top: 0px !important;
+	}
+	
+	
+	#menuResponsive { display: none; }
+	
+
+
+  /*************************************************/
+ /********************* FOOTER ********************/
+/*************************************************/
+#pie {
+	align-self: flex-end;
+	width: 100%;
+	overflow: hidden;
+	margin-top: 100px;
+	font-size: 18px;
+
+	color: #fff;
+	padding: 10px 0;
+	
+	text-align: center; 
+	
+	background-color: #0C59A7;
+}
+
+
+#pie .logo { width: 100px; }
+
+
+
+@media screen and (max-width: 1800px) {
+
+	.centrarheader  { width: 100%; }
+
+}
+
+
+@media screen and (max-width: 1440px) {
+
+
+}
+
+
+@media screen and (max-width: 1170px) {
+
+
+	#menuResponsive {
+		width: 100%;
+		display: block;
+		position: fixed;
+		z-index: 3000;
+		top:0px;
+		left: 0;
+	}
+
+	#barramenuResponsive {
+		background: #211c5b;
+		height: 70px;
+		width: 100%;
+		padding: 4px;
+		display: block;
+		position: absolute;
+		top:0;
+		left: 0;
+		overflow: hidden;
+	}
+	#barramenuResponsive #logo {
+		float: left;
+		margin-top: 14px; padding-left: 10px;
+	}
+	#barramenuResponsive #iconomenu {
+		float: right;
+		margin-top: 10px;
+	}
+	
+
+}
+
+
+
+@media screen and (max-width: 900px) {
+
+#cabecera #logo { width: 40%; }
+#cabecera #hoja { width: 60%; }
+
+}
+

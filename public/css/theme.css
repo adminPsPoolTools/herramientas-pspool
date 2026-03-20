@@ -1,0 +1,309 @@
+
+:root {
+    --azul: #25719d;
+    --azulosc: #00598d;
+    --azulcla: #1c9fd4;
+}
+
+
+
+/* GENÉRICO */
+
+.bg-light {
+    background: none;
+}
+.btn {
+    border-radius: 0;
+}
+
+.btn-volver {
+    min-width: 100px;
+    display: inline-block;
+    padding: 4px 20px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    background-color: #262626;
+    text-decoration: inherit;
+}
+.btn-volver:after {
+    content: "";
+    background: url(../storage/img/volver.png) no-repeat;
+    background-size: 20px 20px;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+.btn-volver:hover {
+    color: #fff;
+    background-color: #000;
+}
+
+header {
+    padding: 20px;
+}
+
+header .logo img {
+    width: 250px;
+}
+
+header.titulo {
+}
+header.titulo .texto {
+    margin-top: 20px;
+    width: 580px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2b2b2b;
+    text-align: left;
+}
+header.titulo h1 {
+    color: var(--azulosc);
+    font-size: 46px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+header.titulo .flecha {
+    margin-top: 50px;
+    padding-left: 25px;
+}
+
+
+
+/* HOME */
+
+header.cabhome {
+    height: 40px;
+    //background-image: url(../storage/img/home/home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
+.album, .contenido { position: relative; margin-top: -150px; }
+
+.album .shadow-blue { box-shadow: 0 0px 14px rgba(108, 134, 162, 0.70); }
+
+.album .card { border-radius: 0; border: none;}
+
+.album .card .card-body {
+    font-size: 16px;
+    line-height: 18px;
+    height: 155px;
+    padding: 35px 40px;
+    background-color: var(--azulosc);
+    color: #fff;
+}
+.album .card .card-body h4 { font-size: 20px; font-weight: 900; }
+
+.album .card .card-img {
+    height: 155px;
+    border-radius: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.album .card .btn-acceder {
+    min-width: 100px;
+    padding: 12px 20px;
+    font-weight: 700;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    text-align: center;
+    color: var(--azulosc);
+    background-color: #fff;
+}
+
+
+
+
+/* SECCIONES */
+
+.seccion header { position: relative; z-index: 0; height: 450px; background-repeat: no-repeat;  background-position: right; } //background-size: 1050px 450px;
+.seccion header.titulo h1 {
+    font-size: 32px;
+}
+.seccion header .texto {
+    width: 800px;
+}
+
+.seccion .caja { background-color: #FFF; box-shadow: 0 6px 15px rgba(108, 134, 162, 0.65); }
+
+.contenido .btn-calcular { min-width: 100px; padding: 12px 20px; font-weight: 700; text-align: center; color: #fff; background-color: var(--azul); }
+
+.contenido input,
+.contenido select {
+    background-color: #eee;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.tablacab { color: #FFF; background-color: var(--azulcla); }
+.tablacomprar { min-width: 100px; max-width: 100%; width: 100%; padding: 3px 14px; font-weight: 700; text-align: center; color: #FFF; background-color: var(--azul); -o-transition: all 0.5s ease; -ms-transition: all 0.5s ease; transition: all 0.5s ease; }
+.tablacomprar:hover { color: #000; background-color: var(--azulcla); }
+
+/* Para los botones de los combis y jets */
+.button-container {
+    display: flex;
+    flex-wrap:wrap; /* Permite que los botones se ajusten en varias líneas si no caben en una sola línea */
+    gap: 1px; /* Espacio entre los botones */
+}
+
+.filter-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background-color: white;
+    color: #007BFF;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.filter-button.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
+#boton_url:hover {
+    background-color: #007BFF; /* Color de fondo al pasar el ratón */
+    cursor: pointer;
+
+}
+
+#boton_url:hover a {
+    color: white; /* Color del texto del enlace al pasar el ratón */
+
+}
+ .container_menu {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+.texto {
+    flex: 1;
+}
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+.menu ul {
+    display: flex;
+    gap: 15px;
+    //background-color: var(--azulosc); /* Fondo distintivo */
+    padding: 10px;
+    border-radius: 5px;
+}
+.menu ul li {
+    list-style: none;
+}
+.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right:10%;
+}
+
+.container_titulo {
+    flex: 1;
+
+}
+
+.border_linea_tabla {
+    border-bottom: 3px solid #ddd;
+}
+
+.selector-container {
+    position: relative;
+    display: inline-block;
+}
+
+.help-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 65%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    font-size: small;
+}
+
+.help-popup {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 800px;
+}
+
+.help-popup::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+
+.inline-container {
+    display: flex;
+    align-items: center;
+}
+
+.inline-container label {
+    margin-right: 10px;
+}
+
+.contenedor-graficas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+canvas {
+    width: 100%;
+    max-width: 500px; /* Ancho máximo por gráfica */
+    height: 300px;
+}
+
+#loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

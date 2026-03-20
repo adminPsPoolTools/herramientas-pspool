@@ -1,0 +1,303 @@
+@media screen and (max-width: 700px) {
+	.breadc-box .row { min-height: 250px; margin-top: 60px; }
+	.entry-content { padding: 0; }
+}
+
+
+.enespera { position: fixed; top:0; left: 0; display: none; background: rgba(0,0,0,0.7); color: #FFF; width: 100%; height: 100%; z-index: 1000; }
+.enespera span{ position: fixed; background: rgba(20,10,10,0.7); width: 300px; height: auto; top: 50%; margin-top: -20px; left: 50%; margin-left: -150px; padding: 12px 8px; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; border: #555 solid 1px; font-size: 17px; text-align: center; }
+.error, .correcto { position: fixed; width: 500px; height: auto; top: 50%; margin-top: -250px; left: 50%; margin-left: -250px; padding: 13px; z-index: 1000; font: 14px Arial, Helvetica, sans-serif; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.error { background: rgba(255,255,255,.8); color: #fd3939; text-align: center; }
+.correcto { background: rgba(255,255,255,.8); color: #000; text-align: center; padding: 60px; font-size: 24px; color: #1db954; font-weight: 900; }
+.correcto img { margin-bottom: 20px; }
+.error b, .correcto b {	font-weight: bold; font-size: 15px; }
+.error #errortxt { margin-top: 20px; }
+body .campoerror { background: #fff5f5; }
+
+
+#btnprueba { width: 20px; height: 20px; background-color: #291d7f; border: 0; }
+
+.salto { clear: both; display: block; }
+.desktop { display: block; }
+.mobile { display: none; }
+.ocultar { display: none; }
+
+#configurador { background-color: #0b599d; text-shadow: none; color: #FFF; font-family: "Poppins", sans-serif !important; }
+#configurador input, #configurador button { font-family: arial; padding: 10px 30px; border-radius: 0; border: none; background-color: #FFF; font-size: 20px; font-weight: bold; color: #135b9b; margin-right: 10px; overflow: hidden; transition: all 0.3s; }
+#configurador button:hover { background-color: #ddd; }
+button.activo, .activo { background-color: #082036 !important; color: #FFF !important; border: 0 !important; border-radius: 0 !important; }
+button:focus { border: 0 !important; border-radius: 0 !important; }
+@media screen and (max-width: 500px) {
+	#configurador input, #configurador button { font-size: 20px; margin-right: 0px; margin-bottom: 8px; }
+}
+
+#enviando { display: none; }
+#formdatos input { width: 40px; padding: 0; color: 000; }
+
+.site-content-inner { margin-top: 130px !important; }
+
+#configurador h2 { font-size: 30px; color: #FFF; margin-bottom: 0px; text-shadow: none; }
+#configurador h2 img { margin-bottom: 10px; }
+#configurador a { text-shadow: none; }
+
+
+
+#configurador .btnsiguiente, #configurador .btnanterior { font-family: arial; padding: 15px 18px; width: 200px; float: right; position: absolute; bottom: 50px; right: 40px; background-color: #01b4ca; font-size: 20px; font-weight: bold; color: #FFF; transition: all 0.5s; }
+#configurador .btnanterior { right: 250px; }
+.btnsiguiente:hover, .btnanterior:hover { background-color: #01b4ca !important; color: #ccc !important; }
+#configurador .btnsiguiente img { padding-left:  25px; }
+#configurador .btnanterior img  { padding-right: 25px; }
+button:disabled { opacity:0.4; filter:alpha(opacity=40); }
+@media screen and (max-width: 700px) {
+	.botones { margin-top: 50px; overflow: hidden; clear: both; display: block; }
+	#configurador .btnsiguiente, #configurador .btnanterior { padding: 10px 10px; width: 45%; float: right; position: inherit;  margin-right: 0px; bottom: 10px; right: 0px; font-size: 18px; }
+	#configurador .btnanterior { float: left; right: 0px; }
+}
+@media screen and (max-width: 500px) {
+	#configurador .btnsiguiente, #configurador .btnanterior { padding: 12px 6px; width: 47%; margin-right: 0px; bottom: 10px; font-size: 16px; }
+	#configurador .btnsiguiente img { padding-left:  5px; }
+	#configurador .btnanterior img  { padding-right: 5px; }
+}
+
+#cubierta, #piscina, #escalera, #lamina, #instalacion, #imprimirdiv, #cliente0, #final  { width: 100%; margin-top: 0px; margin-bottom: 0px; }
+#piscina, #escalera, #lamina, #instalacion, #acabadocubierta, #precio, #imprimirdiv, #cliente0, #final  { display: none; }
+
+#cubierta .dibujo,
+#piscina .dibujo,
+#escalera .dibujo,
+#lamina .dibujo,
+#instalacion .dibujo,
+#precio .dibujo,
+#cliente0 .dibujo,
+#imprimirdiv .dibujo,
+#final .dibujo  { float: left; width: 40%; background-color: #0d4474; overflow: hidden; }
+
+@media screen and (max-width: 700px) {
+	#cubierta .dibujo, #piscina .dibujo, #lamina .dibujo, #precio .dibujo, #cliente0 .dibujo, #final .dibujo { display: none; }
+	#escalera .dibujo { width: 100%; float: right; padding: 0px; }
+}
+
+
+#cubierta .formtemp,
+#piscina .formtemp,
+#escalera .formtemp,
+#lamina .formtemp,
+#instalacion .formtemp,
+#precio .formtemp,
+#cliente0 .formtemp,
+#imprimirdiv .formtemp,
+#final .formtemp  { float: right; width: 60%; padding: 60px; }
+
+#lamina .formtemp { overflow: hidden; margin-bottom: 100px; }
+
+@media screen and (max-width: 700px) {
+	#cubierta .formtemp, #piscina .formtemp, #escalera .formtemp, #lamina .formtemp, #instalacion .formtemp, #precio .formtemp, #cliente0 .formtemp, #final .formtemp { float: left; width: 100%; padding: 20px; }
+	#escalera .formtemp { width: 100%; float: left; }
+}
+@media screen and (max-width: 500px) {
+	#cubierta .formtemp, #piscina .formtemp, #escalera .formtemp, #lamina .formtemp, #instalacion .formtemp, #precio .formtemp, #cliente0 .formtemp, #final .formtemp { text-align: center; }
+	#escalera .formtemp { width: 100%; text-align: center; }
+}
+
+
+.wxh, .dato { float: left; width: auto; }
+.wxh { width: 110px; margin-top: 15px; overflow: hidden; }
+
+
+
+#cubierta #dibucubierta {  }
+#cubierta #delta, #cubierta #altea { float: left; width: 50%; }
+#cubierta #acabadocubierta { float: left; width: 40%; }
+@media screen and (max-width: 500px) {
+	#cubierta #delta, #cubierta #altea { float: left; width: 58%; }
+	#cubierta #acabadocubierta { float: left; width: 40%; }
+}
+
+#piscina #dibupiscina { margin: 60px; width: 300px; height: 500px; border: 25px solid #acacac; border-image: url(../../../img/noise.jpg) 30 30 round; background-image: url(../../../img/agua3.gif); background-color: #00bff3; background-position: center; }
+#piscina input,
+#escalera input  { width: 100px; margin-left: 10px; background-color: #3673aa; color: #FFF; border: 1px solid #FFF; padding: 10px 5px 10px 10px; text-align: center; }
+
+
+
+
+#escalera #dibuescalera { }
+#escalera #dibuescalera #dibuescalera1 { width: 87px; float: left; }
+#escalera #dibuescalera #dibuescalera3 { width: 87px; float: right; }
+#escalera #enrollador .ui-controlgroup-controls .ui-btn,
+#escalera #posicion1 .ui-controlgroup-controls .ui-btn ,
+#escalera #posicion2 .ui-controlgroup-controls .ui-btn  { background: none; border: none; }
+#escalera #enrollador .ui-controlgroup-controls .ui-btn-active,
+#escalera #posicion1 .ui-controlgroup-controls .ui-btn-active,
+#escalera #posicion2 .ui-controlgroup-controls .ui-btn-active { background: #3388cc; border: none; }
+#escalera #posicion1 .ui-radio, #escalera #posicion2 .ui-radio { width: 50%; float: left; }
+
+#escalera #dibuescalera,
+#escalera #escaleraD,
+#escalera #escaleraF  { padding: 60px; min-height: 650px; }
+@media screen and (max-width: 700px) {
+	#escalera #escaleraF { padding: 10px; }
+	#escalera #dibuescalera, #escalera #escaleraD { display: none; padding: 0px; min-height: 0; height: 0; }
+	#escalera #escaleraD img { display: none; }
+}
+
+button#posenrollador1,
+button#posenrollador2 { padding: 8px; text-align: center; margin: 10px; background: none; }
+button#posenrollador1:hover,
+button#posenrollador2:hover { background-color: #135b9b; }
+button#posenrollador1:active,
+button#posenrollador2:active { background-color: #000; }
+
+#escalera .posescalera { width: 50%; float: left; margin:0; padding: 3px; text-align: center; background: none;}
+#escalera .posescalera:hover { background-color: #135b9b; }
+
+@media screen and (max-width: 700px) {
+	.btnescalera { padding: 20px; }
+	#escalera .posescalera {  padding: 0px; }
+}
+@media screen and (max-width: 400px) {
+	#escalera .posescalera { width: 100%; padding: 0px; }
+}
+
+#escalera .largoanchoescalera { float: left; }
+#escalera .formaescalera { float: right; }
+@media screen and (max-width: 500px) {
+	#escalera .formaescalera { float: left; margin-top: 20px; }
+}
+
+
+
+#lamina #divpc label, #lamina #divpvc label { margin: 10px; padding: 3px 6px; }
+#lamina #divpc label img, #lamina #divpvc label img { width: 60px; }
+#lamina .collamina { width: 140px; float: left; margin: 0 0px; padding: 8px 2px; text-align: center; background: none; color: #FFF; }
+#lamina .collamina:hover { background-color: #0d4474; }
+#lamina .collamina:active { background-color: #000; }
+
+
+.provincias { color: #000; font-size: 18px; }
+
+
+
+
+
+#cliente0 .w50 { float: left; width: 50%; padding: 5px; overflow: hidden; }
+#cliente0 input { width: 100%; overflow: hidden; }
+#cliente0 .dibujo  { padding: 60px; background-color: #135b9b; }
+@media screen and (max-width: 700px) {
+	#cliente0 .dibujo { width: 100%; padding: 20px; }
+}
+#cliente0 .comprobacion { margin-top: 30px; }
+#cliente0 .comprobacion .comproba { clear: both; display: block; width: 100%; padding: 5px 0; overflow: hidden; }
+#cliente0 .comprobacion img { float: left; visibility: hidden; width: 50px; padding-right: 10px; }
+#cliente0 .comprobacion .txt { float: left; width: 240px; line-height: 13px; }
+.peque { font-size: 11px; font-style: italic; padding: 3px 0; }
+
+@media screen and (max-width: 700px) {
+	.desktop { display: none; }
+	.mobile { display: block; }
+	#cliente0 input { font-size:12px; padding: 4px 10px; height: 50px; }
+	#cliente0 #comprobacion-mobile { clear: both; display: block; margin-top: 30px; overflow: hidden; }
+	#cliente0 .comprobacion .comproba { float: left; clear: none; width: 50%; padding: 5px 2px; }
+	#cliente0 .comprobacion img { width: 20%; padding-right: 4px; }
+	#cliente0 .comprobacion .txt { width: 80%; }
+}
+
+
+
+
+
+#preciototal { clear: both; display: block; width: 100%; }
+#presupuesto { float: left; font-size: 42px; font-weight: bold; color: #135b9b; background-color: #FFF; padding: 5px 40px; }
+#calculadora { float: left; margin-left: 10px;}
+
+#mostrarprecio { padding: 20px 0; }
+#error { display: none; padding: 30px; background-color: #05223b; font-size: 17px; color: #FFF; text-align: center; width: 100%; overflow: hidden; margin-bottom: 100px; }
+#error #errortxt { font-size: 24px; font-weight: bold; padding: 20px 0; }
+
+
+
+
+.peque { font-size: 11px; font-style: italic; padding: 3px 0; }
+
+
+
+
+#finalizar, #comprobando, #errorCliente { display: none; padding: 30px; background-color: #05223b; font-size: 17px; color: #FFF; text-align: center; width: 100%; overflow: hidden; margin-bottom: 100px; }
+#finalizar #txt,
+#comprobando #txt,
+#errorCliente #errortxt { font-size: 24px; font-weight: bold; padding: 20px 0; }
+
+
+
+
+
+
+
+
+/* CHECKBOXES */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  float: left;
+  clear: both;
+  margin-bottom: 14px;
+
+}
+ 
+/* Ocultamos el checkbox html */
+.switch input {
+  display:none;
+}
+ 
+/* Formateamos la caja del interruptor sobre la cual se deslizará la perilla de control o slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+ 
+/* Pintamos la perilla de control o slider usando el selector before */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+ 
+/* Cambiamos el color de fondo cuando el checkbox esta activado */
+input:checked + .slider {
+  background-color: #01b4ca;
+}
+ 
+/* Deslizamos el slider a la derecha cuando el checkbox esta activado */ 
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+ 
+/* Aplicamos efecto de bordes redondeados en slider y en el fondo del slider */
+.slider.round {
+  border-radius: 34px;
+}
+ 
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.nombrecheck { float: left; font-size: 22px; padding-left: 8px;}
+
+
+
