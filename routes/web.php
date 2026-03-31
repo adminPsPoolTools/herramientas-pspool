@@ -73,6 +73,10 @@ Route::get('/calcularAfm', [App\Http\Controllers\AfmController::class,      'cal
 Route::get('/linearLed',        [App\Http\Controllers\PsLinearLedController::class,      'index'])->name('linearled.index');
 Route::get('/calcularLinearLed', [App\Http\Controllers\PsLinearLedController::class,      'calcular'])->name('linearled.calculo');
 
+/* Calculo POOL Linear led */
+Route::get('/poolneonled',        [App\Http\Controllers\PoolNeonLedController::class,      'index'])->name('poolneonled.index');
+Route::match(['get', 'post'], '/calcularpoolneonled', [App\Http\Controllers\PoolNeonLedController::class,      'calcular'])->name('poolneonled.calculo');
+
 /* Calculo EVA optic */
 Route::get('/evaOptic',        [App\Http\Controllers\EvaOpticController::class,      'index'])->name('evaoptic.index');
 Route::get('/calcularEvaOptic', [App\Http\Controllers\EvaOpticController::class,      'calcular'])->name('evaoptic.calculo');
