@@ -36,7 +36,7 @@ class PdfController extends Controller
             'quality'     => 'in:low,recommended,extreme',
         ]);
 
-        $tmpDir   = storage_path('app/tmp/' . Str::uuid());
+        $tmpDir   = sys_get_temp_dir() . '/pdf-unir-' . Str::uuid();
         $compress = $request->boolean('compress', true);
         $quality  = $request->input('quality', 'recommended');
 
@@ -53,22 +53,22 @@ class PdfController extends Controller
 
             $originalSize = array_sum(array_map('filesize', $pdfPaths));
 
-            // 2. Unir con iLovePDF
+            // 2. Unir con iLovePDF y obtener el PDF en memoria
             $mergedPath = $this->mergePdfs($pdfPaths, $tmpDir);
+            $finalBytes = file_get_contents($mergedPath);
 
             // 3. Comprimir con iLovePDF (si se pidió)
-            $finalPath = $mergedPath;
             if ($compress) {
-                $finalPath = $this->compressPdf($mergedPath, $tmpDir, $quality);
+                $finalBytes = $this->compressPdf($mergedPath, $tmpDir, $quality);
             }
 
-            $finalSize = filesize($finalPath);
+            $finalSize = strlen($finalBytes);
             $saved     = $originalSize - $finalSize;
             $savedPct  = $originalSize > 0 ? round(($saved / $originalSize) * 100) : 0;
 
-            // 4. Devolver el archivo y limpiar después de la respuesta
-            $response = response()->download($finalPath, 'combinado.pdf', [
+            $response = response($finalBytes, 200, [
                 'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="combinado.pdf"',
                 'X-Original-Size'       => $originalSize,
                 'X-Final-Size'          => $finalSize,
                 'X-Saved-Percent'       => $savedPct,
@@ -146,16 +146,10 @@ class PdfController extends Controller
         }
 
         $task->execute();
-        $task->download($tmpDir);
+        $mergedBytes = $task->blob();
 
-        // El SDK descarga el archivo en el directorio, buscamos el PDF resultante
-        $result = $this->findDownloadedPdf($tmpDir, $pdfPaths);
-
-        if (!$result) {
-            throw new \Exception('No se encontró el PDF unido tras la descarga.');
-        }
-
-        return $result;
+        $mergedPath = $this->writeTempFile($tmpDir, $mergedBytes, 'merged_');
+        return $mergedPath;
     }
 
     // ── Comprime un PDF con iLovePDF ───────────────────────────────
@@ -168,16 +162,17 @@ class PdfController extends Controller
         $task->setCompressionLevel($quality); // 'low' | 'recommended' | 'extreme'
 
         $task->execute();
-        $task->download($tmpDir);
+        return $task->blob();
+    }
 
-        $result = $this->findDownloadedPdf($tmpDir, [$pdfPath]);
-
-        if (!$result) {
-            // Si no encontramos el comprimido, devolvemos el original sin comprimir
-            return $pdfPath;
+    private function writeTempFile(string $dir, string $contents, string $prefix = 'tmp_'): string
+    {
+        $tempPath = tempnam($dir, $prefix);
+        if ($tempPath === false) {
+            throw new \RuntimeException('No se pudo crear un archivo temporal.');
         }
-
-        return $result;
+        file_put_contents($tempPath, $contents);
+        return $tempPath;
     }
 
     // ── Busca el PDF más reciente descargado en el directorio ──────
