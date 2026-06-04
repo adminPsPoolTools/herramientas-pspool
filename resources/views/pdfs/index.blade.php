@@ -245,7 +245,7 @@
     </button>
     <div class="privacy">
       <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Los archivos se procesan y eliminan automáticamente
+      Los archivos se combinan en tu navegador y se envían directo a iLovePDF · nunca pasan por el servidor
     </div>
   </div>
 </div>
@@ -281,7 +281,6 @@ $('compToggle').addEventListener('change', e => {
 
 async function load(raw) {
   hideErr(); hideRes();
-
   for (const f of raw) {
     const ext = f.name.split('.').pop().toLowerCase();
     if (ext === 'pdf') {
@@ -290,7 +289,6 @@ async function load(raw) {
       await extractZip(f);
     }
   }
-
   render();
 }
 
@@ -300,7 +298,6 @@ async function extractZip(zipFile) {
     const entries = Object.values(zip.files)
       .filter(entry => !entry.dir && entry.name.toLowerCase().endsWith('.pdf'))
       .sort((a, b) => a.name.localeCompare(b.name));
-
     for (const entry of entries) {
       const blob = await entry.async('blob');
       const name = entry.name.split('/').pop();
@@ -313,18 +310,76 @@ async function extractZip(zipFile) {
 
 async function combinePdfFiles(filesToCombine) {
   const mergedPdf = await PDFLib.PDFDocument.create();
-
   for (let i = 0; i < filesToCombine.length; i++) {
-    const file = filesToCombine[i];
-    const bytes = await file.arrayBuffer();
+    const bytes = await filesToCombine[i].arrayBuffer();
     const srcPdf = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
     const pages = await mergedPdf.copyPages(srcPdf, srcPdf.getPageIndices());
     pages.forEach(page => mergedPdf.addPage(page));
-    setP(Math.round(((i + 1) / filesToCombine.length) * 25), `Combinando archivo ${i + 1} de ${filesToCombine.length}...`);
+    setP(Math.round(((i + 1) / filesToCombine.length) * 30), `Combinando archivo ${i + 1} de ${filesToCombine.length}...`);
   }
-
   const mergedBytes = await mergedPdf.save();
   return new File([mergedBytes], 'combinado.pdf', { type: 'application/pdf' });
+}
+
+// Llama directamente a la REST API de iLovePDF desde el browser (el PDF nunca pasa por el servidor)
+async function compressWithIlovePDF(combinedFile, quality, jwt) {
+  // 1. Iniciar tarea de compresión
+  setP(45, 'Iniciando tarea en iLovePDF...');
+  const startRes = await fetch('https://api.ilovepdf.com/v1/start/compress', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + jwt },
+  });
+  if (!startRes.ok) {
+    const e = await startRes.json().catch(() => ({}));
+    throw new Error('Error al iniciar compresión: ' + (e.error || startRes.status));
+  }
+  const { server, task } = await startRes.json();
+  const apiBase = 'https://' + server + '/v1';
+
+  // 2. Subir PDF combinado directamente a iLovePDF
+  setP(55, 'Subiendo PDF a iLovePDF...');
+  const uploadForm = new FormData();
+  uploadForm.append('task', task);
+  uploadForm.append('file', combinedFile, 'combined.pdf');
+  const uploadRes = await fetch(apiBase + '/upload', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + jwt },
+    body: uploadForm,
+  });
+  if (!uploadRes.ok) {
+    const e = await uploadRes.json().catch(() => ({}));
+    throw new Error('Error al subir PDF: ' + (e.error || uploadRes.status));
+  }
+  const { server_filename } = await uploadRes.json();
+
+  // 3. Procesar (comprimir)
+  setP(70, 'Comprimiendo PDF...');
+  const processRes = await fetch(apiBase + '/process', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + jwt,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      task,
+      tool: 'compress',
+      files: [{ server_filename, filename: 'combined.pdf' }],
+      compress_pdf_quality: quality,
+    }),
+  });
+  if (!processRes.ok) {
+    const e = await processRes.json().catch(() => ({}));
+    throw new Error('Error al comprimir: ' + (e.error || processRes.status));
+  }
+
+  // 4. Descargar resultado directamente desde iLovePDF al browser
+  setP(85, 'Descargando resultado...');
+  const dlRes = await fetch(apiBase + '/download/' + task, {
+    headers: { 'Authorization': 'Bearer ' + jwt },
+  });
+  if (!dlRes.ok) throw new Error('Error al descargar el PDF comprimido');
+
+  return await dlRes.blob();
 }
 
 function render() {
@@ -377,53 +432,68 @@ $('mergeBtn').addEventListener('click', async () => {
   $('progWrap').classList.add('on');
 
   const compress = $('compToggle').checked;
-  const quality  = (document.querySelector('input[name="quality"]:checked') || {value:'recommended'}).value;
-
-  setP(15, 'Combinando archivos localmente...');
-
-  const combinedFile = await combinePdfFiles(files);
-  const fd = new FormData();
-  fd.append('files[]', combinedFile, combinedFile.name);
-  fd.append('compress', compress ? '1' : '0');
-  fd.append('quality',  quality);
+  const quality  = (document.querySelector('input[name="quality"]:checked') || { value: 'recommended' }).value;
 
   try {
-    setP(40, compress ? 'Subiendo combinado a iLovePDF...' : 'Subiendo combinado al servidor...');
-    const res = await fetch('{{ route("pdf.merge") }}', {
-      method: 'POST',
-      headers: { 'X-CSRF-TOKEN': csrfToken },
-      body: fd,
-    });
+    // Paso 1: combinar en el browser con pdf-lib
+    setP(5, 'Combinando archivos localmente...');
+    const combinedFile = await combinePdfFiles(files);
+    const originalSize = combinedFile.size;
 
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({ error: 'Error del servidor' }));
-      throw new Error(err.error || 'Error desconocido');
+    if (!compress) {
+      // Sin compresión: descarga directa del blob combinado, nunca sale del browser
+      setP(100, 'Listo');
+      triggerDownload(combinedFile, 'combinado.pdf');
+      $('rMeta').textContent   = fmt(originalSize);
+      $('rSaving').textContent = `${files.length} archivos combinados`;
+      $('resArea').style.display = 'block';
+      return;
     }
 
-    setP(85, 'Descargando resultado...');
+    // Paso 2: obtener JWT del servidor (solo autenticación, sin archivos)
+    setP(35, 'Autenticando con iLovePDF...');
+    const tokenRes = await fetch('{{ route("pdf.token") }}', {
+      headers: { 'X-CSRF-TOKEN': csrfToken },
+    });
+    if (!tokenRes.ok) {
+      const err = await tokenRes.json().catch(() => ({ error: 'Error de autenticación' }));
+      throw new Error(err.error || 'Error de autenticación');
+    }
+    const { token: jwt } = await tokenRes.json();
 
-    const origSz  = +res.headers.get('X-Original-Size') || 0;
-    const finalSz = +res.headers.get('X-Final-Size')    || 0;
-    const pct     = +res.headers.get('X-Saved-Percent') || 0;
+    // Paso 3-6: el PDF combinado va directamente del browser a iLovePDF, nunca al servidor
+    const compressedBlob = await compressWithIlovePDF(combinedFile, quality, jwt);
 
-    const blob = await res.blob();
-    const url  = URL.createObjectURL(blob);
-    $('dlLink').href = url;
-
-    $('rMeta').textContent   = finalSz ? fmt(finalSz) : fmt(blob.size);
-    $('rSaving').textContent = (pct > 0 && compress)
-      ? `↓ ${pct}% menos · original ${fmt(origSz)}`
-      : `${files.length} archivos combinados`;
+    const finalSize = compressedBlob.size;
+    const savedPct  = originalSize > 0 ? Math.round(((originalSize - finalSize) / originalSize) * 100) : 0;
 
     setP(100, 'Listo');
+    triggerDownload(compressedBlob, 'combinado.pdf');
+    $('rMeta').textContent   = fmt(finalSize);
+    $('rSaving').textContent = savedPct > 0
+      ? `↓ ${savedPct}% menos · original ${fmt(originalSize)}`
+      : `${files.length} archivos combinados`;
     $('resArea').style.display = 'block';
-  } catch(e) {
+
+  } catch (e) {
     showErr(e.message);
   } finally {
     setTimeout(() => $('progWrap').classList.remove('on'), 1400);
     $('mergeBtn').disabled = files.length < 2;
   }
 });
+
+function triggerDownload(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  $('dlLink').href = url;
+  $('dlLink').download = filename;
+  // Descarga automática al terminar
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
 
 function fmt(b) { return b >= 1048576 ? (b/1048576).toFixed(1)+' MB' : Math.round(b/1024)+' KB'; }
 function setP(p, l) { $('progBar').style.width=p+'%'; $('progLbl').textContent=l; $('progPct').textContent=p+'%'; }

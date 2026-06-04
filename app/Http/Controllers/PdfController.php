@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Ilovepdf\Ilovepdf;
@@ -24,6 +25,24 @@ class PdfController extends Controller
     public function index()
     {
         return view('pdfs.index');
+    }
+
+    // ── JWT token para que el browser llame a iLovePDF directamente ─
+    public function getToken(): \Illuminate\Http\JsonResponse
+    {
+        try {
+            $response = Http::post('https://api.ilovepdf.com/v1/auth', [
+                'public_key' => $this->publicKey,
+            ]);
+
+            if ($response->failed()) {
+                return response()->json(['error' => 'Error de autenticación con iLovePDF'], 401);
+            }
+
+            return response()->json(['token' => $response->json('token')]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     // ── Unir + comprimir ────────────────────────────────────────────

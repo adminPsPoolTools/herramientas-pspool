@@ -150,3 +150,4 @@ Route::post('/convert', [CsvToExcelController::class, 'convert'])->name('csv.to.
 
 Route::get('/pdf-unir',          [PdfController::class, 'index'])->name('pdf.index');
 Route::post('/pdf-unir/merge',   [PdfController::class, 'merge'])->name('pdf.merge');
+Route::get('/pdf-unir/token',    [PdfController::class, 'getToken'])->name('pdf.token');
