@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -145,9 +145,8 @@ Route::get('/upload', function () {
     return view('excel/upload');
 });
 
-Route::get('/unir-pdfs', function () {
-    return view('pdfs/unir-pdfs');
-});
-
 
 Route::post('/convert', [CsvToExcelController::class, 'convert'])->name('csv.to.excel');
+
+Route::get('/pdf-unir',          [PdfController::class, 'index'])->name('pdf.index');
+Route::post('/pdf-unir/merge',   [PdfController::class, 'merge'])->name('pdf.merge');
