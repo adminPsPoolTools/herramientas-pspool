@@ -251,6 +251,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script>
 const $ = id => document.getElementById(id);
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
@@ -310,6 +311,22 @@ async function extractZip(zipFile) {
   }
 }
 
+async function combinePdfFiles(filesToCombine) {
+  const mergedPdf = await PDFLib.PDFDocument.create();
+
+  for (let i = 0; i < filesToCombine.length; i++) {
+    const file = filesToCombine[i];
+    const bytes = await file.arrayBuffer();
+    const srcPdf = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+    const pages = await mergedPdf.copyPages(srcPdf, srcPdf.getPageIndices());
+    pages.forEach(page => mergedPdf.addPage(page));
+    setP(Math.round(((i + 1) / filesToCombine.length) * 25), `Combinando archivo ${i + 1} de ${filesToCombine.length}...`);
+  }
+
+  const mergedBytes = await mergedPdf.save();
+  return new File([mergedBytes], 'combinado.pdf', { type: 'application/pdf' });
+}
+
 function render() {
   const list = $('fileList'), n = files.length;
   list.innerHTML = '';
@@ -362,15 +379,16 @@ $('mergeBtn').addEventListener('click', async () => {
   const compress = $('compToggle').checked;
   const quality  = (document.querySelector('input[name="quality"]:checked') || {value:'recommended'}).value;
 
-  setP(15, compress ? 'Subiendo archivos a iLovePDF...' : 'Subiendo archivos...');
+  setP(15, 'Combinando archivos localmente...');
 
+  const combinedFile = await combinePdfFiles(files);
   const fd = new FormData();
-  files.forEach(f => fd.append('files[]', f, f.name));
+  fd.append('files[]', combinedFile, combinedFile.name);
   fd.append('compress', compress ? '1' : '0');
   fd.append('quality',  quality);
 
   try {
-    setP(40, compress ? 'iLovePDF comprimiendo...' : 'Combinando PDFs...');
+    setP(40, compress ? 'Subiendo combinado a iLovePDF...' : 'Subiendo combinado al servidor...');
     const res = await fetch('{{ route("pdf.merge") }}', {
       method: 'POST',
       headers: { 'X-CSRF-TOKEN': csrfToken },

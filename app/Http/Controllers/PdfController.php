@@ -30,8 +30,8 @@ class PdfController extends Controller
     public function merge(Request $request)
     {
         $request->validate([
-            'files'       => 'required|array|min:2',
-            'files.*'     => 'file|mimes:pdf,zip|max:200000', // 200 MB por archivo
+            'files'       => 'required|array|min:1',
+            'files.*'     => 'file|mimes:pdf|max:200000', // 200 MB por archivo
             'compress'    => 'boolean',
             'quality'     => 'in:low,recommended,extreme',
         ]);
@@ -43,23 +43,20 @@ class PdfController extends Controller
         try {
             mkdir($tmpDir, 0755, true);
 
-            // 1. Extraer PDFs (incluidos los ZIPs)
-            $pdfPaths = $this->extractPdfs($request->file('files'), $tmpDir);
-
-            if (empty($pdfPaths)) {
+            $uploadedFiles = $request->file('files');
+            $uploadedFile  = reset($uploadedFiles);
+            if (!$uploadedFile) {
                 $this->cleanup($tmpDir);
-                return response()->json(['error' => 'No se encontraron PDFs válidos.'], 422);
+                return response()->json(['error' => 'No se encontró el archivo combinado.'], 422);
             }
 
-            $originalSize = array_sum(array_map('filesize', $pdfPaths));
+            $uploadedPath = $tmpDir . '/combined.pdf';
+            $uploadedFile->move($tmpDir, basename($uploadedPath));
+            $originalSize = $uploadedFile->getSize() ?? filesize($uploadedPath);
 
-            // 2. Unir con iLovePDF y obtener el PDF en memoria
-            $mergedPath = $this->mergePdfs($pdfPaths, $tmpDir);
-            $finalBytes = file_get_contents($mergedPath);
-
-            // 3. Comprimir con iLovePDF (si se pidió)
+            $finalBytes = file_get_contents($uploadedPath);
             if ($compress) {
-                $finalBytes = $this->compressPdf($mergedPath, $tmpDir, $quality);
+                $finalBytes = $this->compressPdf($uploadedPath, $tmpDir, $quality);
             }
 
             $finalSize = strlen($finalBytes);
