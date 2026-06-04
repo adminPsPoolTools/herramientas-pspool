@@ -145,4 +145,9 @@ Route::get('/upload', function () {
     return view('excel/upload');
 });
 
+Route::get('/unir-pdfs', function () {
+    return view('pdfs/unir-pdfs');
+});
+
+
 Route::post('/convert', [CsvToExcelController::class, 'convert'])->name('csv.to.excel');
