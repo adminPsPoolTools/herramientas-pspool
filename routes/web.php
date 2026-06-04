@@ -148,6 +148,7 @@ Route::get('/upload', function () {
 
 Route::post('/convert', [CsvToExcelController::class, 'convert'])->name('csv.to.excel');
 
-Route::get('/pdf-unir',          [PdfController::class, 'index'])->name('pdf.index');
-Route::post('/pdf-unir/merge',   [PdfController::class, 'merge'])->name('pdf.merge');
-Route::get('/pdf-unir/token',    [PdfController::class, 'getToken'])->name('pdf.token');
+Route::get('/pdf-unir',           [PdfController::class, 'index'])->name('pdf.index');
+Route::post('/pdf-unir/merge',    [PdfController::class, 'merge'])->name('pdf.merge');
+Route::post('/pdf-unir/compress', [PdfController::class, 'compress'])->name('pdf.compress');
+Route::get('/pdf-unir/token',     [PdfController::class, 'getToken'])->name('pdf.token');

@@ -27,6 +27,54 @@ class PdfController extends Controller
         return view('pdfs.index');
     }
 
+    // ── Recibe PDF como raw binary y lo comprime via iLovePDF ────────
+    // Usa php://input en vez de multipart → no aplica upload_max_filesize
+    public function compress(Request $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+    {
+        $quality = $request->query('quality', 'recommended');
+        $tmpDir  = sys_get_temp_dir() . '/pdf-' . Str::uuid();
+
+        try {
+            mkdir($tmpDir, 0755, true);
+
+            $pdfBytes = file_get_contents('php://input');
+            if (!$pdfBytes) {
+                return response()->json(['error' => 'No se recibió el PDF'], 422);
+            }
+
+            $pdfPath     = $tmpDir . '/combined.pdf';
+            file_put_contents($pdfPath, $pdfBytes);
+            $originalSize = strlen($pdfBytes);
+            unset($pdfBytes);
+
+            $finalBytes = $this->compressPdf($pdfPath, $tmpDir, $quality);
+            $finalSize  = strlen($finalBytes);
+            $savedPct   = $originalSize > 0 ? round(($originalSize - $finalSize) / $originalSize * 100) : 0;
+
+            $response = response($finalBytes, 200, [
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="combinado.pdf"',
+                'X-Original-Size'       => $originalSize,
+                'X-Final-Size'          => $finalSize,
+                'X-Saved-Percent'       => $savedPct,
+                'Access-Control-Expose-Headers' => 'X-Original-Size,X-Final-Size,X-Saved-Percent',
+            ]);
+
+            app()->terminating(function () use ($tmpDir) {
+                $this->cleanup($tmpDir);
+            });
+
+            return $response;
+
+        } catch (\Ilovepdf\Exceptions\AuthException $e) {
+            $this->cleanup($tmpDir);
+            return response()->json(['error' => 'Claves de iLovePDF inválidas. Revisa tu .env'], 401);
+        } catch (\Exception $e) {
+            $this->cleanup($tmpDir);
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
     // ── JWT token para que el browser llame a iLovePDF directamente ─
     public function getToken(): \Illuminate\Http\JsonResponse
     {

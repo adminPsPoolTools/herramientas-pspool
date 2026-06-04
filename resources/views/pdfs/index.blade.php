@@ -321,65 +321,32 @@ async function combinePdfFiles(filesToCombine) {
   return new File([mergedBytes], 'combinado.pdf', { type: 'application/pdf' });
 }
 
-// Llama directamente a la REST API de iLovePDF desde el browser (el PDF nunca pasa por el servidor)
-async function compressWithIlovePDF(combinedFile, quality, jwt) {
-  // 1. Iniciar tarea de compresión
-  setP(45, 'Iniciando tarea en iLovePDF...');
-  const startRes = await fetch('https://api.ilovepdf.com/v1/start/compress', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + jwt },
-  });
-  if (!startRes.ok) {
-    const e = await startRes.json().catch(() => ({}));
-    throw new Error('Error al iniciar compresión: ' + (e.error || startRes.status));
-  }
-  const { server, task } = await startRes.json();
-  const apiBase = 'https://' + server + '/v1';
-
-  // 2. Subir PDF combinado directamente a iLovePDF
-  setP(55, 'Subiendo PDF a iLovePDF...');
-  const uploadForm = new FormData();
-  uploadForm.append('task', task);
-  uploadForm.append('file', combinedFile, 'combined.pdf');
-  const uploadRes = await fetch(apiBase + '/upload', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + jwt },
-    body: uploadForm,
-  });
-  if (!uploadRes.ok) {
-    const e = await uploadRes.json().catch(() => ({}));
-    throw new Error('Error al subir PDF: ' + (e.error || uploadRes.status));
-  }
-  const { server_filename } = await uploadRes.json();
-
-  // 3. Procesar (comprimir)
-  setP(70, 'Comprimiendo PDF...');
-  const processRes = await fetch(apiBase + '/process', {
+// Envía el PDF combinado al servidor como binary raw (sin multipart).
+// Así no aplica upload_max_filesize (solo post_max_size, que está en 512M en .htaccess).
+// El servidor lo reenvía a iLovePDF y devuelve el resultado comprimido.
+async function compressViaPHP(combinedFile, quality) {
+  setP(45, 'Subiendo PDF al servidor...');
+  const res = await fetch('{{ route("pdf.compress") }}?quality=' + encodeURIComponent(quality), {
     method: 'POST',
     headers: {
-      'Authorization': 'Bearer ' + jwt,
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/pdf',
+      'X-CSRF-TOKEN': csrfToken,
     },
-    body: JSON.stringify({
-      task,
-      tool: 'compress',
-      files: [{ server_filename, filename: 'combined.pdf' }],
-      compress_pdf_quality: quality,
-    }),
+    body: combinedFile,
   });
-  if (!processRes.ok) {
-    const e = await processRes.json().catch(() => ({}));
-    throw new Error('Error al comprimir: ' + (e.error || processRes.status));
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: 'Error del servidor' }));
+    throw new Error(err.error || 'Error desconocido');
   }
 
-  // 4. Descargar resultado directamente desde iLovePDF al browser
   setP(85, 'Descargando resultado...');
-  const dlRes = await fetch(apiBase + '/download/' + task, {
-    headers: { 'Authorization': 'Bearer ' + jwt },
-  });
-  if (!dlRes.ok) throw new Error('Error al descargar el PDF comprimido');
-
-  return await dlRes.blob();
+  return {
+    blob:       await res.blob(),
+    origSize:   +res.headers.get('X-Original-Size') || combinedFile.size,
+    finalSize:  +res.headers.get('X-Final-Size')    || 0,
+    savedPct:   +res.headers.get('X-Saved-Percent') || 0,
+  };
 }
 
 function render() {
@@ -450,28 +417,14 @@ $('mergeBtn').addEventListener('click', async () => {
       return;
     }
 
-    // Paso 2: obtener JWT del servidor (solo autenticación, sin archivos)
-    setP(35, 'Autenticando con iLovePDF...');
-    const tokenRes = await fetch('{{ route("pdf.token") }}', {
-      headers: { 'X-CSRF-TOKEN': csrfToken },
-    });
-    if (!tokenRes.ok) {
-      const err = await tokenRes.json().catch(() => ({ error: 'Error de autenticación' }));
-      throw new Error(err.error || 'Error de autenticación');
-    }
-    const { token: jwt } = await tokenRes.json();
-
-    // Paso 3-6: el PDF combinado va directamente del browser a iLovePDF, nunca al servidor
-    const compressedBlob = await compressWithIlovePDF(combinedFile, quality, jwt);
-
-    const finalSize = compressedBlob.size;
-    const savedPct  = originalSize > 0 ? Math.round(((originalSize - finalSize) / originalSize) * 100) : 0;
+    // Paso 2: enviar como raw binary al servidor (sin multipart → sin límite upload_max_filesize)
+    const { blob: compressedBlob, origSize, finalSize, savedPct } = await compressViaPHP(combinedFile, quality);
 
     setP(100, 'Listo');
     triggerDownload(compressedBlob, 'combinado.pdf');
-    $('rMeta').textContent   = fmt(finalSize);
+    $('rMeta').textContent   = fmt(finalSize || compressedBlob.size);
     $('rSaving').textContent = savedPct > 0
-      ? `↓ ${savedPct}% menos · original ${fmt(originalSize)}`
+      ? `↓ ${savedPct}% menos · original ${fmt(origSize)}`
       : `${files.length} archivos combinados`;
     $('resArea').style.display = 'block';
 
