@@ -250,6 +250,7 @@
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
 const $ = id => document.getElementById(id);
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
@@ -277,13 +278,36 @@ $('compToggle').addEventListener('change', e => {
   $('qGrid').style.pointerEvents = e.target.checked ? '' : 'none';
 });
 
-function load(raw) {
+async function load(raw) {
   hideErr(); hideRes();
-  raw.forEach(f => {
+
+  for (const f of raw) {
     const ext = f.name.split('.').pop().toLowerCase();
-    if (ext === 'pdf' || ext === 'zip') files.push(f);
-  });
+    if (ext === 'pdf') {
+      files.push(f);
+    } else if (ext === 'zip') {
+      await extractZip(f);
+    }
+  }
+
   render();
+}
+
+async function extractZip(zipFile) {
+  try {
+    const zip = await JSZip.loadAsync(zipFile);
+    const entries = Object.values(zip.files)
+      .filter(entry => !entry.dir && entry.name.toLowerCase().endsWith('.pdf'))
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    for (const entry of entries) {
+      const blob = await entry.async('blob');
+      const name = entry.name.split('/').pop();
+      files.push(new File([blob], name, { type: 'application/pdf' }));
+    }
+  } catch (e) {
+    showErr('Error al leer el ZIP: ' + e.message);
+  }
 }
 
 function render() {
