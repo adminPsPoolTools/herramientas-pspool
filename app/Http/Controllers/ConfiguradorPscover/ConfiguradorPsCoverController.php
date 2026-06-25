@@ -10,9 +10,10 @@ class ConfiguradorPsCoverController extends Controller
     public function index(Request $request)
     {
         $userCod = $request->query('user');
+        $userEmail = $request->query('email');
         $user = $userCod;
 
-        return view('configuradorpscover.index', compact('user'));
+        return view('configuradorpscover.index', compact('user', 'userEmail'));
 
         // if ($user == '14071') {
         //     return view('configuradorpscover.index', compact('user'));
