@@ -38,7 +38,6 @@
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $card->id }}">
                                                 <input type="hidden" name="user" value="{{ $user }}">
-                                                <input type="hidden" name="userEmail" value="{{ $userEmail }}">
                                                 <button type="button" class="border btn btn-acceder"
                                                     onclick="submitForm('{{ $index }}')">{{ $card->boton }}</button>
                                             </form>
