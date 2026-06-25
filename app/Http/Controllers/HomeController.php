@@ -17,6 +17,7 @@ class HomeController extends Controller
     {
         $token = $request->query('token');
         $user = $request->query('user');
+        $userEmail = $request->query('userEmail');
 
         if ($this->isBase64($user)) {
             $decoded = base64_decode($user, true);
@@ -30,7 +31,7 @@ class HomeController extends Controller
         }
 
         $cards = Homes::where('activo', 'S')->get();
-        return view('home.index', compact('cards', 'user'));
+        return view('home.index', compact('cards', 'user', 'userEmail'));
     }
 
     private function isBase64($str)
