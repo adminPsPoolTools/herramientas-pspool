@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $token = $request->query('token');
         $user = $request->query('user');
-        $userEmail = $request->query('userEmail');
+        $userEmail = $request->query('email');
 
         if ($this->isBase64($user)) {
             $decoded = base64_decode($user, true);
