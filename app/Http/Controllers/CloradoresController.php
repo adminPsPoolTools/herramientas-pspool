@@ -38,9 +38,11 @@ class CloradoresController extends Controller
         $temp           = intval($request->temp);
 
         if ($temp === 1) {
-            $resultado = ($numBanyistas * $this->valorBanyista) + ($volPiscina * $this->valorVolumen28) / $horasFilt;
+            $resultado = (($numBanyistas * $this->valorBanyista) + ($volPiscina * $this->valorVolumen28)) / $horasFilt;
+            //dd(['resultado' => $resultado, 'numBanyistas' => $numBanyistas, 'volPiscina' => $volPiscina, 'horasFilt' => $horasFilt, 'temp' => $temp]);
         } else {
-            $resultado = ($numBanyistas * $this->valorBanyista) + ($volPiscina * $this->valorVolumen) / $horasFilt;
+            $resultado = (($numBanyistas * $this->valorBanyista) + ($volPiscina * $this->valorVolumen)) / $horasFilt;
+            //dd(['resultado' => $resultado, 'numBanyistas' => $numBanyistas, 'volPiscina' => $volPiscina, 'horasFilt' => $horasFilt, 'temp' => $temp]);
         }
 
         $articulos      = Cloradores::where('valor', '>', $resultado)->orderBy('valor', 'asc')->get(); // Devuelve el primer resultado que sea mayor al resultado.
