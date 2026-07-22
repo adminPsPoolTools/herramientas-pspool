@@ -21,12 +21,6 @@ class ConfiguradorPsCoverController extends Controller
 
         return view('configuradorpscover.index', compact('user', 'userEmail'));
 
-        // if ($user == '14071') {
-        //     return view('configuradorpscover.index', compact('user'));
-        // } else {
-        //     //return view('configuradorpscover.index', compact('user'));
-        //     return view('mantenimiento.index', compact('user'));
-        // }
     }
 
     private function notifyWebhook(string $userEmail): void

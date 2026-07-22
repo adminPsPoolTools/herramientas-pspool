@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 
 class CloradoresController extends Controller
 {
-    private $valorPrivada = 2;
-    private $valorPublica = 3.5;
+    private $valorBanyista = 10;
+    private $valorVolumen = 3;
+    private $valorVolumen28 = 3.5;
     /**
      * Show the application dashboard.
      *
@@ -28,29 +29,18 @@ class CloradoresController extends Controller
             'numero_banyistas'  => 'required',
             'volumen_piscina'   => 'required',
             'horas_filtracion'  => 'required',
-            'tipo_piscina'      => 'required',
-            'temp'              => 'required'
-
+            'temp' => 'required'
         ]);
 
         $numBanyistas   = intval($request->numero_banyistas);
         $volPiscina     = intval($request->volumen_piscina);
         $horasFilt      = intval($request->horas_filtracion);
-        $tipoPiscina    = $request->tipo_piscina;
-        $temp           = $request->temp;
+        $temp           = intval($request->temp);
 
-        if ($tipoPiscina == "privada") {
-            if ($temp == "0") {
-                $resultado  = round((($volPiscina * $this->valorPrivada)) / $horasFilt, 2);
-            } else {
-                $resultado  = round((($volPiscina * $this->valorPublica)) / $horasFilt, 2);
-            }
+        if ($temp === 1) {
+            $resultado = ($numBanyistas * $this->valorBanyista) + ($volPiscina * $this->valorVolumen28) / $horasFilt;
         } else {
-            if ($temp == "0") {
-                $resultado  = round((($numBanyistas * 10) + ($volPiscina * $this->valorPrivada)) / $horasFilt, 2);
-            } else {
-                $resultado  = round((($numBanyistas * 10) + ($volPiscina * $this->valorPublica)) / $horasFilt, 2);
-            }
+            $resultado = ($numBanyistas * $this->valorBanyista) + ($volPiscina * $this->valorVolumen) / $horasFilt;
         }
 
         $articulos      = Cloradores::where('valor', '>', $resultado)->orderBy('valor', 'asc')->get(); // Devuelve el primer resultado que sea mayor al resultado.

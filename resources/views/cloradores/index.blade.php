@@ -11,28 +11,17 @@
         <form action="{{ route('clorador.calculo') }}" id="formulario-calculo" method="get">
             <div class="grid gap-4 md:grid-cols-2">
                 <div class="block text-sm font-medium text-gray-700">
-                    <label for="tipo_piscina">Tipo de piscina</label><br>
-                    <select name="tipo_piscina" id="tipo_piscina" onchange="toggleInput()"
-                        class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        <option value="privada">Privada</option>
-                        <option value="publica">Pública</option>
-                    </select>
-                    <span class="text-sm text-red-500" id="error-tipo_piscina"></span>
-                </div>
-
-                <div class="block text-sm font-medium text-gray-700">
-                    <label for="temp">Temperatura Piscina*</label><br>
-                    <select name="temp" id="temp" onchange="toggleInput()"
+                    <label for="temp">Temperatura piscina</label><br>
+                    <select name="temp" id="temp"
                         class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                         <option value="0">Menos de 28ºC</option>
                         <option value="1">Más de 28ºC</option>
                     </select>
-                    <span class="text-sm text-red-500" id="error-tipo_piscina"></span>
+                    <span class="text-sm text-red-500" id="error-temp"></span>
                 </div>
 
-                <div id="banyistas-container" class="block text-sm font-medium text-gray-700">
-                    <label for="banyistas" class="block text-sm font-medium text-gray-700">Número de
-                        bañistas</label>
+                <div class="block text-sm font-medium text-gray-700">
+                    <label for="banyistas" class="block text-sm font-medium text-gray-700">Número de bañistas</label>
                     <input type="number"
                         class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         id="numero_banyistas" name="numero_banyistas" value="10"
@@ -106,24 +95,6 @@
 </div>
 
 <script>
-    function toggleInput() {
-
-        var tipoPiscina = document.getElementById('tipo_piscina').value;
-        var banyistasContainer = document.getElementById('banyistas-container');
-
-        if (tipoPiscina === 'privada') {
-            banyistasContainer.style.display = 'none';
-        } else {
-            banyistasContainer.style.display = 'block';
-        }
-    }
-
-    // Inicializar el estado del campo al cargar la página
-    document.addEventListener('DOMContentLoaded', function() {
-        toggleInput();
-
-    });
-
     $(document).ready(function() {
         $('#formulario-calculo').submit(function(event) {
             // Evitar el envío del formulario por defecto
@@ -156,7 +127,7 @@
                     document.getElementById('error-banyistas').textContent = '';
                     document.getElementById('error-volumen').textContent = '';
                     document.getElementById('error-horas').textContent = '';
-                    document.getElementById('error-tipo_piscina').textContent = '';
+                    document.getElementById('error-temp').textContent = '';
 
                     // Función para borrar el contenido de la tabla
                     function borrarContenidoTabla() {
@@ -192,7 +163,7 @@
                     document.getElementById('error-banyistas').textContent = '';
                     document.getElementById('error-volumen').textContent = '';
                     document.getElementById('error-horas').textContent = '';
-                    document.getElementById('error-tipo_piscina').textContent = '';
+                    document.getElementById('error-temp').textContent = '';
 
                     if (xhr.responseJSON && xhr.responseJSON.errors) {
                         // Manejar errores de validación
@@ -206,8 +177,8 @@
                         if (errors.horas_filtracion) {
                             document.getElementById('error-horas').textContent = errors.horas_filtracion[0];
                         }
-                        if (errors.tipo_piscina) {
-                            document.getElementById('error-tipo_piscina').textContent = errors.tipo_piscina[0];
+                        if (errors.temp) {
+                            document.getElementById('error-temp').textContent = errors.temp[0];
                         }
                 } else {
                     alert('Se ha producido un error: ' + error);
