@@ -148,7 +148,7 @@
                         html +=
                             '<th class="w-2/4 px-4 py-3 text-sm font-semibold text-white bg-gray-800">Kg AFM 1</th>';
                         html +=
-                            '<th class="px-4 py-3 text-sm font-semibold text-center border"><a class="btn-calcular disabled:opacity-25" target="_blank" href="https://ps-pool.com/tienda/medios-filtrantes/290-1653-medio-de-filtrado-afmR-ng-506028305061.html#/1718-kilos-21_kg/1719-granulometria-grado_1">' +
+                            '<th class="px-4 py-3 text-sm font-semibold text-center border"><a class="btn-calcular disabled:opacity-25" target="_blank" href="https://ps-pool.com/tienda/medios-filtrantes/1584-7354-medio-de-filtrado-afmR-ng-506028305061.html#/1719-granulometria-grado_1">' +
                             afmGrado1.toString().replace('.', ',') +
                             ' Kg AFM grado 1</a></th>';
                         html += '</tr>';
@@ -157,7 +157,7 @@
                         html +=
                             '<th class="w-2/4 px-4 py-3 text-sm font-semibold text-white bg-gray-800">Kg AFM 2</th>';
                         html +=
-                            '<th class="px-4 py-3 text-sm font-semibold text-center border"><a class="btn-calcular disabled:opacity-25" target="_blank" href="https://ps-pool.com/tienda/medios-filtrantes/290-1654-medio-de-filtrado-afmR-ng-506028305061.html#/1718-kilos-21_kg/1720-granulometria-grado_2">' +
+                            '<th class="px-4 py-3 text-sm font-semibold text-center border"><a class="btn-calcular disabled:opacity-25" target="_blank" href="https://ps-pool.com/tienda/medios-filtrantes/1584-7355-medio-de-filtrado-afmR-ng-506028305061.html#/1720-granulometria-grado_2">' +
                             afmGrado2.toString().replace('.', ',') +
                             ' Kg AFM grado 2</a></th>';
                         html += '</tr>';
@@ -167,7 +167,7 @@
                             html +=
                                 '<th class="w-2/4 px-4 py-3 text-sm font-semibold text-white bg-gray-800">Kg AFM 3</th>';
                             html +=
-                                '<th class="px-4 py-3 text-sm font-semibold text-center border"><a class="btn-calcular disabled:opacity-25" target="_blank" href="https://ps-pool.com/tienda/medios-filtrantes/290-1655-medio-de-filtrado-afmR-ng-506028305061.html#/1718-kilos-21_kg/1721-granulometria-grado_3">' +
+                                '<th class="px-4 py-3 text-sm font-semibold text-center border"><a class="btn-calcular disabled:opacity-25" target="_blank" href="https://ps-pool.com/tienda/medios-filtrantes/1584-7356-medio-de-filtrado-afmR-ng-506028305061.html#/1721-granulometria-grado_3">' +
                                 afmGrado3.toString().replace('.', ',') +
                                 ' Kg AFM grado 3</a></th>';
                             html += '</tr>';
