@@ -62,9 +62,9 @@ function pdfFilasLineas($lineas, $multiplicarCantidad)
         $pvp += $cantidad * (float) $row->PVP;
 
         $html .= '
-            <tr><td colspan="3" style="height:3px;"></td></tr>
+            <tr><td colspan="3" style="height:9px;"></td></tr>
             <tr>
-                <td style="width:16px; background:#d9d9d9; text-align:center; vertical-align:middle; font-weight:bold; padding:2px 0;">' . pdfTexto($row->LINEA) . '</td>
+                <td style="width:16px; background:#d9d9d9; text-align:center; vertical-align:middle; font-weight:bold; padding:4px 0;">' . pdfTexto($row->LINEA) . '</td>
                 <td style="width:36px; padding-left:4px; font-weight:bold; vertical-align:middle;">' . pdfTexto($row->ARTICULO) . '</td>
                 <td style="font-weight:bold; vertical-align:middle;">' . pdfTexto($row->DESCARTICULO) . '</td>
             </tr>';
@@ -76,7 +76,7 @@ function pdfFilasLineas($lineas, $multiplicarCantidad)
 function pdfFilaSubtotal($pvp)
 {
     return '
-            <tr><td colspan="3" style="height:3px;"></td></tr>
+            <tr><td colspan="3" style="height:9px;"></td></tr>
             <tr>
                 <td colspan="3">
                     <table style="width:100%; border-collapse:separate; border-spacing:6px 0;">
@@ -94,8 +94,8 @@ function pdfCabeceraCondiciones($pagina)
     return '
     <table style="width:100%; border-collapse:collapse; margin-bottom:8px;">
         <tr>
-            <td style="width:160px;"><img src="/config/img/logo-pscover.png" style="width:150px; height:auto;"></td>
-            <td style="text-align:center; font-size:11px; font-weight:bold; text-decoration:underline;">CONDICIONES GENERALES</td>
+            <td style="width:160px;"><img src="/config/img/logo-pscover.png" style="width:130px; height:auto;"></td>
+            <td style="text-align:center; font-size:10px; font-weight:bold; text-decoration:underline;">CONDICIONES GENERALES</td>
             <td style="width:90px; text-align:center;"><div style="border:1px solid #000; padding:3px; font-weight:bold;">P&aacute;gina: ' . $pagina . ' / 3</div></td>
         </tr>
     </table>';
@@ -114,9 +114,8 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
 {
     $codigo = mysqli_real_escape_string($conn, $presupuesto);
 
-    $sql = "SELECT P.CODIGO, P.TITULO, P.FECHA, P.TOTAL, P.CODIGO_WEB, P.DESCRIPCION_CLIENTE,
-                   C.CODIGO AS CLIENTE, C.ALIAS, C.DIRECCION, C.POBLACION, C.CIF, C.PROVINCIA,
-                   C.TELEFONOFIJO, C.FAX, C.CP, C.CORREO, F.DESCRIPCION AS FORMADEPAGO
+    $sql = "SELECT P.CODIGO, P.TITULO, P.FECHA, P.CODIGO_WEB, P.DESCRIPCION_CLIENTE,
+                   F.DESCRIPCION AS FORMADEPAGO
               FROM PRESUPUESTOS P
               LEFT JOIN CLIENTES C   ON P.CLIENTE     = C.CODIGO
               LEFT JOIN FORMASPAGO F ON C.FORMADEPAGO = F.CODIGO
@@ -144,19 +143,19 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
     $celdaDato = 'border:1px solid #000; padding:2px 4px;';
 
     $html = '
-<div style="font-family: Arial, Helvetica, sans-serif; font-size:8px; color:#000; line-height:1.25;">
+<div style="font-family: Arial, Helvetica, sans-serif; font-size:7px; color:#000; line-height:1.3;">
 
     <!-- ===================== PÁGINA 1 ===================== -->
-    <div style="min-height:1020px; display:flex; flex-direction:column;">
+    <div style="min-height:1040px; display:flex; flex-direction:column;">
 
         <div style="border:1px solid #000;">
-            <div style="background:' . $gris . '; border-bottom:1px solid #000; text-align:center; font-size:12px; font-weight:bold; letter-spacing:1px; padding:2px;">PRESUPUESTO</div>
+            <div style="background:' . $gris . '; border-bottom:1px solid #000; text-align:center; font-size:10px; font-weight:bold; letter-spacing:1px; padding:2px;">PRESUPUESTO</div>
 
             <table style="width:100%; border-collapse:collapse;">
                 <tr>
                     <td style="width:52%; vertical-align:top; padding:6px 8px;">
-                        <img src="/config/img/logo-pscover.png" style="width:150px; height:auto;"><br>
-                        <div style="margin-top:6px; font-size:9px; font-weight:bold;">C.I.F. B-42691709</div>
+                        <img src="/config/img/logo-pscover.png" style="width:130px; height:auto;"><br>
+                        <div style="margin-top:6px; font-size:8px; font-weight:bold;">C.I.F. B-42691709</div>
                         <div style="margin-top:4px;">
                             PS-POOL AUTOMATIC COVER SL<br>
                             AV. BENIDORM, N&ordm; 12<br>
@@ -177,18 +176,10 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
                                 <td style="' . $celdaDato . ' text-align:center;">' . pdfTexto($codigoPresupuesto) . '</td>
                             </tr>
                         </table>
-                        <div style="margin-top:4px;">
-                            <b>' . pdfTexto($row->CLIENTE) . ' - ' . pdfTexto($row->ALIAS) . '</b><br>
-                            ' . pdfTexto($row->DIRECCION) . '<br>
-                            ' . pdfTexto($row->CP) . ' - ' . pdfTexto($row->POBLACION) . '<br>
-                            ' . pdfTexto($row->PROVINCIA) . '<br>
-                            TLF: ' . pdfTexto($row->TELEFONOFIJO) . '<br>
-                            FAX: ' . pdfTexto($row->FAX) . '<br>
-                            E-MAIL: ' . pdfTexto($row->CORREO) . '<br>
-                            CIF: ' . pdfTexto($row->CIF) . '
-                        </div>
-                        <div style="margin-top:4px; font-weight:bold; font-style:italic;">A la atenci&oacute;n de:</div>
-                        <div>' . $datosClienteFinal . '</div>
+                        <!-- Datos que el cliente rellena en el formulario (tabla HTML ya escapada en scriptPS.JS) -->
+                        <style>.pdf-cliente table { font-size:inherit; width:auto !important; } .pdf-cliente td { padding:1px 10px 1px 0; vertical-align:top; color:#000; }</style>
+                        <div style="margin-top:6px; font-weight:bold; font-style:italic;">DATOS DEL CLIENTE</div>
+                        <div class="pdf-cliente" style="margin-top:2px;">' . $datosClienteFinal . '</div>
                     </td>
                 </tr>
             </table>
@@ -214,7 +205,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
         <!-- Hueco flexible: empuja el pie al final de la primera página -->
         <div style="flex:1 1 auto;"></div>
 
-        <div style="border:1px solid #000; padding:5px 8px; font-size:10px; width:55%; margin-bottom:6px;">
+        <div style="border:1px solid #000; padding:5px 8px; font-size:8px; width:55%; margin-bottom:6px;">
             ENTIDADES BANCARIAS<br><br>
             SANTANDER &nbsp; IBAN: ES65 0049 6979 6223 1000 9031
         </div>
@@ -227,7 +218,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
                 </td>
                 <td style="width:1%;"></td>
                 <td style="width:35%; vertical-align:top; border:1px solid #000; padding:0;">
-                    <div style="background:#ffff00; border-bottom:1px solid #000; text-align:center; font-weight:bold; font-style:italic; font-size:10px; padding:2px;">Oferta v&aacute;lida 60 d&iacute;as</div>
+                    <div style="background:#ffff00; border-bottom:1px solid #000; text-align:center; font-weight:bold; font-style:italic; font-size:8px; padding:2px;">Oferta v&aacute;lida 60 d&iacute;as</div>
                     <table style="width:100%; border-collapse:collapse; margin:4px 0;">
                         <tr>
                             <td style="text-align:right; font-weight:bold; padding:2px 6px;">% DTO.</td>
@@ -242,15 +233,15 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
                             <td style="text-align:right; border-bottom:1px solid #000; padding:2px 6px;">21%</td>
                         </tr>
                         <tr>
-                            <td style="text-align:right; font-weight:bold; font-style:italic; font-size:10px; padding:6px 6px 2px;">TOTAL</td>
-                            <td style="padding:6px 6px 2px;"><div style="background:#ffff00; border:1px solid #000; text-align:right; font-weight:bold; font-size:10px; padding:2px 4px;">' . pdfEuros($total) . '</div></td>
+                            <td style="text-align:right; font-weight:bold; font-style:italic; font-size:9px; padding:6px 6px 2px;">TOTAL</td>
+                            <td style="padding:6px 6px 2px;"><div style="background:#ffff00; border:1px solid #000; text-align:right; font-weight:bold; font-size:9px; padding:2px 4px;">' . pdfEuros($total) . '</div></td>
                         </tr>
                     </table>
                 </td>
             </tr>
         </table>
 
-        <div style="margin-top:8px; font-size:6px; color:#1f3c88; line-height:1.3;">
+        <div style="margin-top:8px; font-size:5.5px; color:#1f3c88; line-height:1.3;">
             Informaci&oacute;n sobre protecci&oacute;n de datos.<br>
             De conformidad con lo dispuesto en el RGPD y la LOPDGDD, informamos que los datos personales ser&aacute;n tratados por PS POOL AUTOMATIC COVER, S.L., con la finalidad de posibilitar las comunicaciones a trav&eacute;s del correo electr&oacute;nico. Puede solicitar m&aacute;s informaci&oacute;n y ejercer sus derechos escribiendo a info@ps-cover.com.
             En virtud de la LSSICE, este mensaje y sus archivos adjuntos pueden contener informaci&oacute;n confidencial, por lo que queda informado de que su uso no autorizado est&aacute; prohibido por la ley. Si ha recibido este mensaje por equivocaci&oacute;n, por favor notif&iacute;quelo inmediatamente a trav&eacute;s de esta misma v&iacute;a y borre el mensaje original junto con sus ficheros adjuntos sin leerlo o grabarlo total o parcialmente.
@@ -260,7 +251,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
     <div class="html2pdf__page-break"></div>
 
     <!-- ===================== PÁGINA 2 ===================== -->
-    <div style="font-size:8px;">
+    <div style="font-size:7px;">
         ' . pdfCabeceraCondiciones(2) . '
         <b>GARANT&Iacute;AS</b>
         <ul style="margin:2px 0 6px; padding-left:18px;">
@@ -311,7 +302,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
     <div class="html2pdf__page-break"></div>
 
     <!-- ===================== PÁGINA 3 ===================== -->
-    <div style="font-size:8px;">
+    <div style="font-size:7px;">
         ' . pdfCabeceraCondiciones(3) . '
         <b>PLAZOS</b>
         <ul style="margin:2px 0 6px; padding-left:18px;">
