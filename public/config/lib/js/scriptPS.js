@@ -63,10 +63,12 @@ $(document).ready(function () {
         });
 
     $("#imprimir").click(function () {
+        console.log("[PDF] clic en imprimir");
         $("#presu").val($("#codpresupuesto").val());
 
         // La ventana se abre en el clic (no en la respuesta AJAX) para que el navegador no la bloquee
         var pdfWindow = window.open('', '_blank');
+        console.log("[PDF] ventana abierta:", !!pdfWindow);
         if (pdfWindow) {
             pdfWindow.document.write('<p style="font-family:sans-serif;text-align:center;margin-top:40px">Generando PDF...</p>');
         }
@@ -79,6 +81,7 @@ $(document).ready(function () {
             cache: false, //Para que el formulario no guarde cache
             success: function (response) {
                 $('#enviando').fadeOut('slow');
+                console.log("[PDF] respuesta pscover.php OK =", response.OK, "| longitud HTML =", (response.HTML || '').length);
                 if (response.OK == 1) {
 
                     var nombre = 'presupuesto-' + ($("#presu").val() || 'pscover') + '.pdf';
@@ -91,9 +94,11 @@ $(document).ready(function () {
                     };
 
                     html2pdfCargado.done(function () {
+                        console.log("[PDF] html2pdf cargado, generando...");
                         if (pdfWindow) {
                             // Se muestra en el visor PDF del navegador: el usuario elige imprimir o descargar
                             html2pdf().set(opciones).from(response.HTML).outputPdf('blob').then(function (blob) {
+                                console.log("[PDF] PDF generado,", blob.size, "bytes");
                                 pdfWindow.location.href = URL.createObjectURL(blob);
                             }).catch(function (e) {
                                 console.error(e);
@@ -122,6 +127,7 @@ $(document).ready(function () {
             },
             error: function (request, status, error) {
                 if (pdfWindow) pdfWindow.close();
+                console.error("[PDF] error en pscover.php:", status, error, request.responseText);
                 //PABLO GESPLANET
                 console.log("Request: " + request);
                 console.log("Status: " + status);
