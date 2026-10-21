@@ -80,7 +80,10 @@ $(document).ready(function () {
 
                     // Título de la pestaña y nombre del archivo: PTO-XXXXXX-NOMBRE CLIENTE
                     var codigoPdf = response.CODIGO || $("#presu").val() || 'PRESUPUESTO';
-                    var clientePdf = $.trim($("#nombre").val() || '').toUpperCase();
+                    // Nombre con la primera letra de cada palabra en mayúscula: "Juan Pérez"
+                    var clientePdf = $.trim($("#nombre").val() || '').toLowerCase().replace(/(^|\s)\S/g, function (letra) {
+                        return letra.toUpperCase();
+                    });
                     var tituloPdf = (codigoPdf + (clientePdf ? '-' + clientePdf : '')).replace(/[\\\/:*?"<>|]+/g, '');
                     var nombre = tituloPdf + '.pdf';
                     var margen = 10; // mm
