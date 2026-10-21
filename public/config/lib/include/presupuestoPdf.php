@@ -219,7 +219,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
                 <td style="width:1%;"></td>
                 <td style="width:35%; vertical-align:top; border:1px solid #000; padding:0;">
                     <div style="background:#ffff00; border-bottom:1px solid #000; text-align:center; font-weight:bold; font-style:italic; font-size:8px; padding:2px;">Oferta v&aacute;lida 60 d&iacute;as</div>
-                    <table style="width:100%; border-collapse:collapse; margin:4px 0; font-size:9px;">
+                    <table style="width:100%; border-collapse:collapse; margin:4px 0; font-size:10px;">
                         <tr>
                             <td style="text-align:right; font-weight:bold; padding:2px 6px;">% DTO.</td>
                             <td style="text-align:right; border-bottom:1px solid #000; padding:2px 6px;">0,00 %</td>
@@ -233,8 +233,8 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
                             <td style="text-align:right; border-bottom:1px solid #000; padding:2px 6px;">21%</td>
                         </tr>
                         <tr>
-                            <td style="text-align:right; font-weight:bold; font-style:italic; font-size:9px; padding:6px 6px 2px;">TOTAL</td>
-                            <td style="padding:6px 6px 2px;"><div style="background:#ffff00; border:1px solid #000; text-align:right; font-weight:bold; font-size:9px; padding:2px 4px;">' . pdfEuros($total) . '</div></td>
+                            <td style="text-align:right; font-weight:bold; font-style:italic; font-size:10px; padding:6px 6px 2px;">TOTAL</td>
+                            <td style="padding:6px 6px 2px;"><div style="background:#ffff00; border:1px solid #000; text-align:right; font-weight:bold; font-size:10px; padding:2px 4px;">' . pdfEuros($total) . '</div></td>
                         </tr>
                     </table>
                 </td>
