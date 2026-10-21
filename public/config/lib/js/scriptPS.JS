@@ -86,6 +86,7 @@ $(document).ready(function () {
                     });
                     var tituloPdf = (codigoPdf + (clientePdf ? '-' + clientePdf : '')).replace(/[\\\/:*?"<>|]+/g, '');
                     var nombre = tituloPdf + '.pdf';
+                    console.log("[PDF] código:", response.CODIGO, "| nombre cliente:", $("#nombre").val(), "| título:", tituloPdf);
                     var margen = 10; // mm
                     var opciones = {
                         margin: margen,
