@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('config/lib/css/configurador.css') }}" />
     <script src="{{ asset('config/lib/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('config/lib/js/scriptPS.JS') }}?v={{ filemtime(public_path('config/lib/js/scriptPS.JS')) }}"></script>
+    <script src="{{ asset('config/lib/js/scriptPS.JS') }}?v={{ @filemtime(public_path('config/lib/js/scriptPS.JS')) ?: time() }}"></script>
     <script type="text/javascript" src="{{ asset('config/lib/html2pdf-master/dist/html2pdf.bundle.min.js') }}"></script>
 
     <div class="container max-w-screen-lg mx-auto mb-4 w-12/12 contenido">

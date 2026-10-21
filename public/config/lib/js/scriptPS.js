@@ -53,6 +53,15 @@ $(document).ready(function () {
         });
     };
 
+    // Si la página no incluye html2pdf, se carga desde CDN
+    var html2pdfCargado = (typeof html2pdf !== 'undefined')
+        ? $.Deferred().resolve().promise()
+        : $.ajax({
+            url: 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js',
+            dataType: 'script',
+            cache: true
+        });
+
     $("#imprimir").click(function () {
         $("#presu").val($("#codpresupuesto").val());
 
@@ -81,19 +90,25 @@ $(document).ready(function () {
                         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
                     };
 
-                    if (pdfWindow) {
-                        // Se muestra en el visor PDF del navegador: el usuario elige imprimir o descargar
-                        html2pdf().set(opciones).from(response.HTML).outputPdf('blob').then(function (blob) {
-                            pdfWindow.location.href = URL.createObjectURL(blob);
-                        }).catch(function (e) {
-                            console.error(e);
-                            pdfWindow.close();
-                            alert("No se pudo generar el PDF");
-                        });
-                    } else {
-                        // Ventanas emergentes bloqueadas: se descarga directamente
-                        html2pdf().set(opciones).from(response.HTML).save();
-                    }
+                    html2pdfCargado.done(function () {
+                        if (pdfWindow) {
+                            // Se muestra en el visor PDF del navegador: el usuario elige imprimir o descargar
+                            html2pdf().set(opciones).from(response.HTML).outputPdf('blob').then(function (blob) {
+                                pdfWindow.location.href = URL.createObjectURL(blob);
+                            }).catch(function (e) {
+                                console.error(e);
+                                pdfWindow.close();
+                                alert("No se pudo generar el PDF");
+                            });
+                        } else {
+                            // Ventanas emergentes bloqueadas: se descarga directamente
+                            html2pdf().set(opciones).from(response.HTML).save();
+                        }
+                    }).fail(function () {
+                        console.error("No se pudo cargar html2pdf");
+                        if (pdfWindow) pdfWindow.close();
+                        alert("No se pudo generar el PDF");
+                    });
 
                 } else {
                     if (pdfWindow) pdfWindow.close();
