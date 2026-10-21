@@ -63,7 +63,7 @@ function pdfFilasLineas($lineas, $multiplicarCantidad)
 
         $html .= '
             <tr><td colspan="3" style="height:9px;"></td></tr>
-            <tr>
+            <tr style="font-size:6.5px;">
                 <td style="width:16px; background:#d9d9d9; text-align:center; vertical-align:middle; font-weight:bold; padding:4px 0;">' . pdfTexto($row->LINEA) . '</td>
                 <td style="width:36px; padding-left:4px; font-weight:bold; vertical-align:middle;">' . pdfTexto($row->ARTICULO) . '</td>
                 <td style="font-weight:bold; vertical-align:middle;">' . pdfTexto($row->DESCARTICULO) . '</td>
@@ -96,7 +96,7 @@ function pdfCabeceraCondiciones($pagina)
         <tr>
             <td style="width:160px;"><img src="/config/img/logo-pscover.png" style="width:130px; height:auto;"></td>
             <td style="text-align:center; font-size:10px; font-weight:bold; text-decoration:underline;">CONDICIONES GENERALES</td>
-            <td style="width:90px; text-align:center;"><div style="border:1px solid #000; padding:3px; font-weight:bold;">P&aacute;gina: ' . $pagina . ' / 3</div></td>
+            <td style="width:110px; text-align:right;"><div style="display:inline-block; border:1px solid #000; padding:2px 20px; font-weight:bold; font-style:italic; white-space:nowrap;">P&aacute;gina: ' . $pagina . ' / 3</div></td>
         </tr>
     </table>';
 }
@@ -177,7 +177,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
                             </tr>
                         </table>
                         <!-- Datos que el cliente rellena en el formulario (tabla HTML ya escapada en scriptPS.JS) -->
-                        <style>.pdf-cliente table { font-size:inherit; width:auto !important; } .pdf-cliente td { padding:1px 10px 1px 0; vertical-align:top; color:#000; }</style>
+                        <style>.pdf-cliente table { font-size:inherit; width:auto !important; } .pdf-cliente td { padding:1px 10px 1px 0; vertical-align:top; color:#000; } .pdf-cond li { margin-bottom:2px; }</style>
                         <div style="margin-top:6px; font-weight:bold; font-style:italic;">DATOS DEL CLIENTE</div>
                         <div class="pdf-cliente" style="margin-top:2px;">' . $datosClienteFinal . '</div>
                     </td>
@@ -185,7 +185,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
             </table>
         </div>
 
-        <div style="background:' . $gris . '; text-align:center; font-weight:bold; font-style:italic; padding:3px; margin-top:4px;">' . pdfTexto($titulo) . '</div>
+        <div style="background:' . $gris . '; text-align:center; font-weight:bold; font-style:italic; font-size:6.5px; padding:3px; margin-top:4px;">' . pdfTexto($titulo) . '</div>
 
         <table style="width:100%; border-collapse:collapse; margin-top:4px;">
             <tr style="background:' . $gris . '; font-weight:bold;">
@@ -205,7 +205,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
         <!-- Hueco flexible: empuja el pie al final de la primera página -->
         <div style="flex:1 1 auto;"></div>
 
-        <div style="border:1px solid #000; padding:5px 8px; font-size:8px; width:55%; margin-bottom:6px;">
+        <div style="border:1px solid #000; padding:5px 8px; width:55%; margin-bottom:6px;">
             ENTIDADES BANCARIAS<br><br>
             SANTANDER &nbsp; IBAN: ES65 0049 6979 6223 1000 9031
         </div>
@@ -251,23 +251,23 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
     <div class="html2pdf__page-break"></div>
 
     <!-- ===================== PÁGINA 2 ===================== -->
-    <div style="font-size:7px;">
+    <div class="pdf-cond" style="font-size:7px; line-height:1.5; min-height:1040px; display:flex; flex-direction:column; justify-content:space-between;">
         ' . pdfCabeceraCondiciones(2) . '
-        <b>GARANT&Iacute;AS</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        <div><b>GARANT&Iacute;AS</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>Motor y cuadro el&eacute;ctrico: 2 a&ntilde;os</li>
             <li>Lama de PVC opacas: 2 a&ntilde;os</li>
             <li>Lamas de Policarbonato: 3 a&ntilde;os</li>
-        </ul>
-        La garant&iacute;a <b>incluye:</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        </ul></div>
+        <div>La garant&iacute;a <b>incluye:</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>Esta garant&iacute;a cubre, en general, cualquier defecto de fabricaci&oacute;n.</li>
             <li>Cubre todo el equipo el&eacute;ctrico (motores, buen funcionamiento de los finales de carrera y cuadro), con la condici&oacute;n expresa de que el cableado entre el cuadro y el motor haya sido instalado de acuerdo con las instrucciones que se proporcionan, y especialmente en lo que se refiere a la secci&oacute;n del cable y su longitud.</li>
             <li>La garant&iacute;a se har&aacute; efectiva &uacute;nicamente cuando las piezas hayan sido devueltas a f&aacute;brica para su examen y cuando, una vez revisadas en f&aacute;brica, se determine que se trata de un defecto o fallo de fabricaci&oacute;n.</li>
             <li>La garant&iacute;a est&aacute; limitada a la sustituci&oacute;n de las piezas que sean defectuosas y no incluye los gastos de desmontaje y montaje, ni tampoco da&ntilde;os y perjuicios.</li>
-        </ul>
-        La garant&iacute;a <b>no incluye:</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        </ul></div>
+        <div>La garant&iacute;a <b>no incluye:</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>Deterioros debidos al transporte (ver apartado de transporte).</li>
             <li>Montajes o instalaciones defectuosas o no conformes con nuestro manual de instalaci&oacute;n.</li>
             <li>Modificaciones del material sin el consentimiento del fabricante.</li>
@@ -276,18 +276,18 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
             <li>Desgastes del motor y cuadro provocados por no respetar las reglas de conexi&oacute;n.</li>
             <li>Da&ntilde;os debidos a tormentas el&eacute;ctricas.</li>
             <li>PS Cover declina cualquier responsabilidad por los da&ntilde;os f&iacute;sicos o materiales que se pudieran producir en el caso de que la cubierta haya sido instalada sin alguno de los elementos que se indican en el manual de instalaci&oacute;n.</li>
-        </ul>
-        <b>RECOMENDACIONES</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        </ul></div>
+        <div><b>RECOMENDACIONES</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>Cuando la cubierta est&aacute; cerrada es recomendable poner peri&oacute;dicamente en funcionamiento la filtraci&oacute;n.</li>
             <li>No dejar nunca las lamas al aire libre sin protecci&oacute;n o sin que est&eacute;n en contacto con el agua.</li>
             <li>No caminar nunca sobre la cubierta.</li>
             <li>En el caso de piscinas desbordantes, tomar las precauciones necesarias para estar seguro de que la piscina no desbordar&aacute; si se produce una tormenta.</li>
             <li>Eliminar de la superficie de la cubierta las hojas y otros residuos ya que, de lo contrario, pueden aparecer con rapidez manchas irreversibles en las lamas. Se trata de un proceso biol&oacute;gico que no est&aacute; cubierto por nuestra garant&iacute;a.</li>
             <li>Es recomendable instalar una toma de tierra, y es absolutamente imprescindible en aquellas piscinas en las que existe un aparato de electr&oacute;lisis salina.</li>
-        </ul>
-        <b>ACLARACIONES</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        </ul></div>
+        <div><b>ACLARACIONES</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>La cubierta se calcula con forma rectangular. Los recortes se presupuestar&aacute;n aparte.</li>
             <li>Es necesario dejar instalado, previamente a la colocaci&oacute;n de la cubierta, un tubo corrugado o tubo flexible empotrado a la altura del eje del enrollador para pasar por su interior el cable del motor.</li>
             <li>La cubierta tendr&aacute; de anchura 3 cm menos con respecto al ancho de la piscina como margen para permitir su correcto deslizamiento.</li>
@@ -295,23 +295,23 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
             <li>El cuadro el&eacute;ctrico presenta un interruptor de 3 posiciones para utilizar en caso de p&eacute;rdida del mando.</li>
             <li>La instalaci&oacute;n de la cubierta no est&aacute; incluida en el precio, pero disponemos de servicio t&eacute;cnico que podr&iacute;a realizarla. Consultar presupuesto y disponibilidad en funci&oacute;n de zona geogr&aacute;fica.</li>
             <li>Comunicar cualquier modificaci&oacute;n, ya que puede suponer cambios en el presupuesto.</li>
-        </ul>
+        </ul></div>
         ' . pdfFirma($codigoPresupuesto) . '
     </div>
 
     <div class="html2pdf__page-break"></div>
 
     <!-- ===================== PÁGINA 3 ===================== -->
-    <div style="font-size:7px;">
+    <div class="pdf-cond" style="font-size:7px; line-height:1.5; min-height:1040px; display:flex; flex-direction:column; justify-content:space-between;">
         ' . pdfCabeceraCondiciones(3) . '
-        <b>PLAZOS</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        <div><b>PLAZOS</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>Fabricaci&oacute;n: 1 semana desde la recepci&oacute;n de la hoja de fabricaci&oacute;n. La producci&oacute;n de la cubierta no se iniciar&aacute; hasta que no se reciba la hoja de fabricaci&oacute;n completamente rellena. No se planificar&aacute; ni iniciar&aacute; la producci&oacute;n de ninguna cubierta cuya hoja de fabricaci&oacute;n* est&eacute; incompleta.
                 (<i>*Todos los datos que se solicitan en la hoja de fabricaci&oacute;n son necesarios para asegurar la correcta fabricaci&oacute;n de la cubierta, ya que esta se realizar&aacute; siguiendo las medidas exactas recogidas en ese documento; por ello es muy importante no dejar ning&uacute;n campo sin completar. En el caso de piscinas con escaleras integradas es preciso completar tambi&eacute;n el Anexo: medidas escalera.</i>)</li>
             <li>Entrega: 2 semanas desde el inicio de la producci&oacute;n, para Pen&iacute;nsula y Baleares.</li>
-        </ul>
-        <b>TRANSPORTE Y ENTREGA</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        </ul></div>
+        <div><b>TRANSPORTE Y ENTREGA</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>La cubierta ser&aacute; entregada en la direcci&oacute;n que se indica en la hoja de fabricaci&oacute;n por un cami&oacute;n tr&aacute;iler, que no cuenta con medios de descarga, y dentro de una caja de embalaje de protecci&oacute;n paletizada.</li>
             <li>El cliente debe asegurarse de que es posible el acceso de un cami&oacute;n de gran volumen hasta la direcci&oacute;n que se ha indicado, sin que existan impedimentos tales como cables, &aacute;rboles, v&iacute;as demasiado estrechas, etc.</li>
             <li>En el caso de que el acceso de un cami&oacute;n tr&aacute;iler no sea posible, o que no se disponga de los medios de descarga necesarios, es preciso comunicarlo con antelaci&oacute;n para realizar la entrega en un cami&oacute;n especial, con un coste adicional.</li>
@@ -319,15 +319,15 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
             <li>El cliente deber&aacute; tener previstos los medios necesarios para la descarga de la caja y su traslado hasta el lugar en que se va a instalar la cubierta.</li>
             <li>En el momento de recepcionar la mercanc&iacute;a hay que asegurarse de que la caja no ha sufrido golpes y est&aacute; intacta. Incluso aunque no se observe da&ntilde;o aparente, se deber&aacute; abrir el embalaje y, en caso de da&ntilde;os, notificarlo en un plazo no superior a 24 horas. En este caso hay que hacerlo constar en el albar&aacute;n de la empresa de transporte, realizar unas fotograf&iacute;as y notificarlo inmediatamente. Si en el justificante de entrega no se ha comunicado ning&uacute;n desperfecto, el responsable del da&ntilde;o ser&aacute; el receptor de la mercanc&iacute;a. Estas medidas son ajenas a PS Cover y responden a la Ley de Contrato de Transporte Terrestre de mercanc&iacute;as.</li>
             <li>PS Cover no correr&aacute; con los gastos de cualquier cambio, retraso o modificaci&oacute;n que se produzca en el transporte y entrega de la cubierta y cuyas causas no le sean directamente atribuibles.</li>
-        </ul>
-        <b>ACLARACIONES ESPEC&Iacute;FICAS PARA CADA MODELO DE CUBIERTA</b>
-        <ul style="margin:2px 0 6px; padding-left:18px;">
+        </ul></div>
+        <div><b>ACLARACIONES ESPEC&Iacute;FICAS PARA CADA MODELO DE CUBIERTA</b>
+        <ul style="margin:3px 0 0; padding-left:18px;">
             <li>TERRA: En el caso de que la coronaci&oacute;n tenga voladizo ser&aacute; necesario realizar un recorte en la coronaci&oacute;n de 30 cm para permitir el funcionamiento correcto de la cubierta. M&aacute;s detalles: consultar FICHA T&Eacute;CNICA CUBIERTA TERRA.</li>
             <li>PACIFIC DECK: Medidas del caj&oacute;n 75 x 80 cm para cubiertas de hasta 15 m de longitud. M&aacute;s detalles: consultar FICHA T&Eacute;CNICA PACIFIC DECK.</li>
             <li>PACIFIC TOP: Las medidas del caj&oacute;n deben ser de 80 cm de alto y 77 cm de ancho para cubiertas de hasta 15 m de longitud. M&aacute;s detalles: consultar FICHA T&Eacute;CNICA PACIFIC TOP.</li>
             <li>PACIFIC CAVE: Las esquinas del extremo de la piscina en el que ir&aacute; ubicado el enrollador deben ser a 90&deg; para garantizar la correcta instalaci&oacute;n del enrollador y de las tapas. M&aacute;s detalles: consultar FICHA T&Eacute;CNICA PACIFIC CAVE.</li>
             <li>PACIFIC DUO: Las medidas del caj&oacute;n ser&aacute;n de 74 x 74 cm + 7 cm de separaci&oacute;n de la pared. M&aacute;s detalles: consultar FICHA T&Eacute;CNICA PACIFIC DUO.</li>
-        </ul>
+        </ul></div>
         ' . pdfFirma($codigoPresupuesto) . '
     </div>
 </div>';
