@@ -15,6 +15,7 @@ include 'include/config.php';
 include 'include/funciones.php';
 include 'include/utilidades.php';
 include 'include/imprimirPdf.php';
+include 'include/presupuestoPdf.php';
 
 use Modelos\DatosPresupuesto;
 
@@ -166,10 +167,10 @@ switch ($tipo) {
 
         break;
 
-    case 3: // NO SE USA Imprimir el presupuesto
+    case 3: // Imprimir el presupuesto (PDF generado en el navegador con html2pdf)
         $presupuesto       = $_POST['PRESUPUESTO'];
         $datosClienteFinal = $_POST['DATOSPRINT'];
-        $html = obtenerFacturaPresupuesto($conn, $presupuesto, $datosClienteFinal, false);
+        $html = obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal);
 
         $result = array(
             "OK" => 1,

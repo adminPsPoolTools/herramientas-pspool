@@ -89,32 +89,7 @@ $(document).ready(function () {
                         pagebreak: { mode: ['css', 'legacy'], avoid: 'tr' }
                     };
 
-                    // Alto útil de una página A4 en px (html2pdf usa 96 ppp), con algo de holgura
-                    // para que la primera página no desborde y el total quede en su pie
-                    var altoPagina = Math.floor((297 - 2 * margen) * 96 / 25.4) - 20;
-
-                    var estilosPdf =
-                        '.pdf-presupuesto { font-size: 10px; line-height: 1.3; color: #000; }' +
-                        '.pdf-presupuesto h3 { font-size: 15px; margin: 2px 0; }' +
-                        '.pdf-presupuesto h5 { font-size: 12px; margin: 2px 0; }' +
-                        '.pdf-presupuesto p { margin: 0 0 2px; }' +
-                        '.pdf-presupuesto ul { margin: 0 0 4px; padding-left: 18px; }' +
-                        '.pdf-presupuesto img { max-width: 140px !important; height: auto !important; }' +
-                        '.pdf-presupuesto .table { margin-bottom: 4px; }' +
-                        '.pdf-presupuesto .table-sm th, .pdf-presupuesto .table-sm td { padding: 2px 4px !important; }' +
-                        '.pdf-presupuesto .p-1, .pdf-presupuesto .p-2, .pdf-presupuesto .p-3 { padding: 3px !important; }' +
-                        '.pdf-presupuesto .m-2, .pdf-presupuesto .m-3 { margin: 3px !important; }' +
-                        '.pdf-presupuesto .mt-2, .pdf-presupuesto .mt-3 { margin-top: 4px !important; }' +
-                        '.pdf-presupuesto .pl-5 { padding-left: 14px !important; }' +
-                        '.pdf-presupuesto .ml-3 { margin-left: 6px !important; }' +
-                        '.pdf-presupuesto .alert { padding: 4px 8px; margin: 4px 0; }' +
-                        // Subtotales alineados a la derecha
-                        '.pdf-presupuesto .justify-content-end { display: flex !important; justify-content: flex-end !important; width: 100%; }' +
-                        // Primera página con alto fijo: el hueco (#relleno) empuja forma de pago y total al pie
-                        '.pdf-presupuesto #contenedor > .pages:first-child { min-height: ' + altoPagina + 'px; display: flex !important; flex-direction: column !important; }' +
-                        '.pdf-presupuesto #relleno { flex: 1 1 auto !important; }';
-
-                    var htmlPdf = '<div class="pdf-presupuesto"><style>' + estilosPdf + '</style>' + response.HTML + '</div>';
+                    var htmlPdf = response.HTML;
 
                     html2pdfCargado.done(function () {
                         console.log("[PDF] html2pdf cargado, generando...");
