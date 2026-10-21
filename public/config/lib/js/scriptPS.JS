@@ -79,7 +79,10 @@ $(document).ready(function () {
                 if (response.OK == 1) {
 
                     // Título de la pestaña y nombre del archivo: PTO-XXXXXX-NOMBRE CLIENTE
-                    var codigoPdf = response.CODIGO || $("#presu").val() || 'PRESUPUESTO';
+                    var codigoPdf = String(response.CODIGO || $("#presu").val() || '');
+                    if (codigoPdf.toUpperCase().indexOf('PTO-') !== 0) {
+                        codigoPdf = 'PTO-' + codigoPdf;
+                    }
                     // Nombre con la primera letra de cada palabra en mayúscula: "Juan Pérez"
                     var clientePdf = $.trim($("#nombre").val() || '').toLowerCase().replace(/(^|\s)\S/g, function (letra) {
                         return letra.toUpperCase();

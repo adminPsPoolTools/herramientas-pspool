@@ -127,7 +127,9 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal, &$codigo
     $row = mysqli_fetch_object($res);
 
     $codigoPresupuesto = !empty($row->CODIGO) ? $row->CODIGO : $row->CODIGO_WEB;
-    $codigoSalida = $codigoPresupuesto;
+    // Código visible (casilla, firma, título y nombre del PDF) siempre con el prefijo PTO-
+    $codigoMostrar = (stripos((string) $codigoPresupuesto, 'PTO-') === 0) ? $codigoPresupuesto : 'PTO-' . $codigoPresupuesto;
+    $codigoSalida = $codigoMostrar;
     $titulo = trim((string) $row->DESCRIPCION_CLIENTE) !== '' ? $row->DESCRIPCION_CLIENTE : $row->TITULO;
     $formaPago = trim((string) $row->FORMADEPAGO) !== '' ? $row->FORMADEPAGO : '50% transferencia y 50% antes de la entrega';
 
@@ -175,7 +177,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal, &$codigo
                             </tr>
                             <tr>
                                 <td style="' . $celdaDato . ' text-align:right; font-weight:bold;">C&Oacute;DIGO PRESUPUESTO</td>
-                                <td style="' . $celdaDato . ' text-align:center;">' . pdfTexto($codigoPresupuesto) . '</td>
+                                <td style="' . $celdaDato . ' text-align:center;">' . pdfTexto($codigoMostrar) . '</td>
                             </tr>
                         </table>
                         <!-- Datos que el cliente rellena en el formulario (tabla HTML ya escapada en scriptPS.JS) -->
@@ -298,7 +300,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal, &$codigo
             <li>La instalaci&oacute;n de la cubierta no est&aacute; incluida en el precio, pero disponemos de servicio t&eacute;cnico que podr&iacute;a realizarla. Consultar presupuesto y disponibilidad en funci&oacute;n de zona geogr&aacute;fica.</li>
             <li>Comunicar cualquier modificaci&oacute;n, ya que puede suponer cambios en el presupuesto.</li>
         </ul></div>
-        ' . pdfFirma($codigoPresupuesto) . '
+        ' . pdfFirma($codigoMostrar) . '
     </div>
 
     <div class="html2pdf__page-break"></div>
@@ -330,7 +332,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal, &$codigo
             <li>PACIFIC CAVE: Las esquinas del extremo de la piscina en el que ir&aacute; ubicado el enrollador deben ser a 90&deg; para garantizar la correcta instalaci&oacute;n del enrollador y de las tapas. M&aacute;s detalles: consultar FICHA T&Eacute;CNICA PACIFIC CAVE.</li>
             <li>PACIFIC DUO: Las medidas del caj&oacute;n ser&aacute;n de 74 x 74 cm + 7 cm de separaci&oacute;n de la pared. M&aacute;s detalles: consultar FICHA T&Eacute;CNICA PACIFIC DUO.</li>
         </ul></div>
-        ' . pdfFirma($codigoPresupuesto) . '
+        ' . pdfFirma($codigoMostrar) . '
     </div>
 </div>';
 
