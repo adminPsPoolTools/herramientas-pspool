@@ -55,6 +55,13 @@ $(document).ready(function () {
 
     $("#imprimir").click(function () {
         $("#presu").val($("#codpresupuesto").val());
+
+        // La ventana se abre en el clic (no en la respuesta AJAX) para que el navegador no la bloquee
+        var pdfWindow = window.open('', '_blank');
+        if (pdfWindow) {
+            pdfWindow.document.write('<p style="font-family:sans-serif;text-align:center;margin-top:40px">Generando PDF...</p>');
+        }
+
         $.ajax({
             url: url,
             type: "POST",
@@ -65,22 +72,41 @@ $(document).ready(function () {
                 $('#enviando').fadeOut('slow');
                 if (response.OK == 1) {
 
-                    var customWindow = window.open('', 'PRINT', 'height=auto, width=auto');
-                    var html = response.HTML;
-                    customWindow.document.write(html);
-                    customWindow.document.close();
-                    customWindow.focus();
-                    customWindow.print();
-                    customWindow.close();
+                    var nombre = 'presupuesto-' + ($("#presu").val() || 'pscover') + '.pdf';
+                    var opciones = {
+                        margin: 10,
+                        filename: nombre,
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, useCORS: true },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                    };
 
-                } else if (response.OK == 0) {
-                    alert("no");
+                    if (pdfWindow) {
+                        // Se muestra en el visor PDF del navegador: el usuario elige imprimir o descargar
+                        html2pdf().set(opciones).from(response.HTML).outputPdf('blob').then(function (blob) {
+                            pdfWindow.location.href = URL.createObjectURL(blob);
+                        }).catch(function (e) {
+                            console.error(e);
+                            pdfWindow.close();
+                            alert("No se pudo generar el PDF");
+                        });
+                    } else {
+                        // Ventanas emergentes bloqueadas: se descarga directamente
+                        html2pdf().set(opciones).from(response.HTML).save();
+                    }
+
                 } else {
-                    $("#btnprecioS").prop('disabled', true);
-                    alert("Sin respuesta");
+                    if (pdfWindow) pdfWindow.close();
+                    if (response.OK == 0) {
+                        alert("no");
+                    } else {
+                        $("#btnprecioS").prop('disabled', true);
+                        alert("Sin respuesta");
+                    }
                 }
             },
             error: function (request, status, error) {
+                if (pdfWindow) pdfWindow.close();
                 //PABLO GESPLANET
                 console.log("Request: " + request);
                 console.log("Status: " + status);
