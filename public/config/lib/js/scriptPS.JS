@@ -12,32 +12,26 @@ $(document).ready(function () {
             data: $("#formdatos").serialize(),
             dataType: "json",
             cache: false, //Para que el formulario no guarde cache
-            beforeSend: function (xhr) {
-                //console.log("URL enviada:", url);
-                //console.log("Datos enviados:", $("#formdatos").serialize());
-            },
             success: function (response) {
-                //console.log("Respuesta completa:", response);
                 $('#enviando').fadeOut('slow');
-
                 if (response.OK == 1) {
-
                     $("#codpresupuesto").val(response.CODIGO_PRESUPUESTO);
-                    $("#btnprecioS").prop('disabled', false);
                     $('#mostrarprecio').show();
+                    $('#ivaincl').show();
+                    $('#atencion').show();
+                    $("#btnprecioPVPS").prop('disabled', false);
                     $('#error').hide();
                     PRECIO = Intl.NumberFormat('de-DE').format(parseFloat(response.PRECIO).toFixed(2));
+                    PRECIOBRUTO = Intl.NumberFormat('de-DE').format(parseFloat(response.PRECIO_PVP).toFixed(2));
                     $('#presupuesto').html(PRECIO + " €");
-
+                    $('#presupuestoPVP').html(PRECIOBRUTO + " €");
                 } else if (response.OK == 0) {
-
-                    $("#btnprecioS").prop('disabled', true);
+                    $("#btnprecioPVPS").prop('disabled', true);
                     $('#error').show();
                     $('#mostrarprecio').hide();
                     $('#error #errortxt').html(response.ERROR);
-
                 } else {
-                    $("#btnprecioS").prop('disabled', true);
+                    $("#btnprecioPVPS").prop('disabled', true);
                     alert("Sin respuesta");
                 }
             },
@@ -110,7 +104,7 @@ $(document).ready(function () {
                             html2pdf().set(opciones).from(response.HTML).save();
                         }
                     }).fail(function () {
-                        console.error("No se pudo cargar html2pdf");
+                        console.error("[PDF] no se pudo cargar html2pdf");
                         if (pdfWindow) pdfWindow.close();
                         alert("No se pudo generar el PDF");
                     });
@@ -256,6 +250,7 @@ $(document).ready(function () {
         $("#opcion_deltaCD").hide();
         $("#btncubiertaS").prop('disabled', false);
     });
+
     $("#terra_slim").click(function () {
         $("#dibucubierta").html("<img src=\"../../../config/img/modelos/terra_slim.jpg\" width=\"100%\">");
         $("#acabadocubierta").fadeOut();
@@ -263,6 +258,7 @@ $(document).ready(function () {
         $("#opcion_deltaCD").hide();
         $("#btncubiertaS").prop('disabled', false);
     });
+
     $("#terra_solar").click(function () {
         $("#dibucubierta").html("<img src=\"../../../config/img/modelos/terra_solar.jpg\" width=\"100%\">");
         $("#acabadocubierta").fadeOut();
@@ -300,13 +296,11 @@ $(document).ready(function () {
 
     // Botones atrás / siguiente
     $("#btncubiertaS").click(function () {
-
         $("#deltaltea").val($("input[name='deltaltea']:checked").val());
         $("#conViga").val($("input[name='acabadocubierta1']:checked").val());
         $("#conTapa").val($("input[name='acabadocubierta2']:checked").val());
         $("#cubierta").hide();
         $("#piscina").show();
-
     });
 
     /*********** PISCINA *************/
@@ -343,7 +337,9 @@ $(document).ready(function () {
 
     $("#posescaleraD").click(function () {
         $("#posicionEscalera").val("D");
-        $("#dibuescalera, #escaleraFC").hide();
+        $("#dibuescalera").hide();
+        $("#escaleraF").hide();
+        $("#enrollador").hide();
         $("#escaleraD").show();
         $(".lugarescalera").removeClass("activo");
         $(this).addClass("activo");
@@ -353,10 +349,11 @@ $(document).ready(function () {
 
     $("#posescaleraF").click(function () {
         $("#posicionEscalera").val("F");
-        $("#dibuescalera, #escaleraD").hide();
+        $("#dibuescalera").hide();
+        $("#escaleraD").hide();
         $("#escaleraF").show();
-        $("#posicion1, #posicion2").hide();
         $("#enrollador").show();
+        $("#posicion1, #posicion2").hide();
         $(".lugarescalera").removeClass("activo");
         $(this).addClass("activo");
         $("#btnescaleraS").prop('disabled', true);
@@ -467,8 +464,10 @@ $(document).ready(function () {
 
     $("#matlamina2").click(function () {
         $("#dibulamina").html("<img src=\"../../../config/img/laminas/pvc.jpg\" width=\"100%\">");
-        $("#divpc").hide(); $("#divpvc").show();
-        $(".matlamina").removeClass("activo"); $(this).addClass("activo");
+        $("#divpc").hide();
+        $("#divpvc").show();
+        $(".matlamina").removeClass("activo");
+        $(this).addClass("activo");
         $("#tipoLamina").val($(this).attr("value"));
 
     });
@@ -483,16 +482,14 @@ $(document).ready(function () {
 
     // Botones atrás / siguiente
     $("#btnlaminaA").click(function () {
-        $("#lamina").hide(); $("#escalera").show();
+        $("#lamina").hide();
+        $("#escalera").show();
     });
 
     $("#btnlaminaS").click(function () {
-
-        $("#TIPO").val(1);
         $("#lamina").hide();
         $("#instalacion").show();
         $('#error').hide();
-
     });
 
     /*********** INSTALACION *************/
@@ -504,15 +501,17 @@ $(document).ready(function () {
 
     $("#instaExterna").click(function () {
         insta = "ext";
-        $("#tipoInsta").val("E");
-        $("#propia").hide(); $("#externa").show();
+        $("#tipoInsta").val("N");
+        $("#propia").hide();
+        $("#externa").show();
         cinstaE();
     });
 
     $("#instaPropia").click(function () {
         insta = "prop";
         $("#tipoInsta").val("P");
-        $("#externa").hide(); $("#propia").show();
+        $("#externa").hide();
+        $("#propia").show();
         cinstaP();
     });
 
@@ -522,7 +521,11 @@ $(document).ready(function () {
     });
 
     $("#instaprecio0").on("keyup", function () {
-        if ($(this).val().length > 2) { inspre = 1; } else { inspre = 0; }
+        if ($(this).val().length > 2) {
+            inspre = 1;
+        } else {
+            inspre = 0;
+        }
         cinstaP();
     });
 
@@ -545,7 +548,6 @@ $(document).ready(function () {
         }
     }
     function cinstaP() {
-
         if (inspre == 1) {
             $("#btninstalacionS").prop('disabled', false);
         } else {
@@ -561,70 +563,45 @@ $(document).ready(function () {
 
     $("#btninstalacionS").click(function () {
         $("#instalacion").hide();
-        //$("#cod_cliente").show();
+        $("#instaprecio").val($("#instaprecio0").val());
         $("#preciopvp").show();
         $("#CLIENTE").val($("input[name='acabadocubierta2']:checked").val());
         $('#error').hide();
-        $("#PVP").val(1);
+        $("#TIPO").val(1);
+
         // ENVIAMOS DATOS
         enviar();
     });
 
     /*********** PRECIO PVP *************/
 
+    $("#btnprecioPVPS").prop('disabled', true);
 
-    // Botones atrás / siguiente
+    // Botones atrás
     $("#btnprecioPVPA").click(function () {
+        $("#preciopvp").hide();
         $("#instalacion").show();
-        $("#preciopvp").hide();
     });
 
+    // Botones siguiente
     $("#btnprecioPVPS").click(function () {
-        $("#cod_cliente").show();
         $("#preciopvp").hide();
+        $("#precioneto").show();
     });
 
+    /*********** PRECIO NETO *************/
 
-    /*********** CODIGO CLIENTE *************/
+    //$("#btnprecioNETOS").prop('disabled', false);
 
-    $("#btncodigoclienteA").click(function () {
-
+    // Botones atrás
+    $("#btnprecioNETOA").click(function () {
+        $("#precioneto").hide();
         $("#preciopvp").show();
-        $("#cod_cliente").hide();
-
     });
-
-    $("#btncodigoclienteS").click(function () {
-
-        $("#instaprecio").val($("#instaprecio0").val());
-        $("#provinciaPrecio").val($("#provinciaPre").val());
-        $("#cod_cliente").hide();
-        $("#codcliente").val($("#codclienteV").val());
-        $("#codseguridad").val($("#codseguridadV").val());
-
-        // ENVIAMOS DATOS
-        //enviar();
-
-        $("#instalacion").hide();
-        $("#precio").show();
-        $('#error').hide();
-
-    });
-
-    /*********** PRECIO *************/
-
-    $("#btnprecioS").prop('disabled', true);
-
-    // Botones atrás / siguiente
-    $("#btnprecioA").click(function () {
-
-        $("#precio").hide();
-        $("#cod_cliente").show();
-
-    });
-    $("#btnprecioS").click(function () {
-        $("#cod_cliente").hide();
-        $("#precio").hide(); $("#cliente0").show();
+    // Botones siguiente
+    $("#btnprecioNETOS").click(function () {
+        $("#precioneto").hide();
+        $("#cliente0").show();
     });
 
     /*********** CLIENTE *************/
@@ -653,10 +630,10 @@ $(document).ready(function () {
 
     // Botones atrás / siguiente
     $("#btnclienteA").click(function () {
-
-        $("#cliente0").hide(); $("#precio").show();
-
+        $("#cliente0").hide();
+        $("#precioneto").show();
     });
+
     $("#btnclienteS").click(function () {
         let datosclientehtml = `
                 <table style="border-collapse: collapse; width: 100%;">
@@ -699,16 +676,14 @@ $(document).ready(function () {
         $("#imprimirdiv").hide(); $("#cliente0").show();
 
     });
-    $("#btnimprimirS").click(function () {
-        $("#TIPO").val(4);
-        $("#imprimirdiv").hide(); $("#final").show();
-
+    $("#inicio").click(function () {
+        $("#imprimirdiv").hide();
+        $("#cubierta").show();
     });
 
     /*********** FINAL *************/
     // Botones atrás / siguiente
     $("#btnfinalizarA").click(function () {
-
         $("#final").hide(); $("#imprimirdiv").show();
 
     });
