@@ -78,7 +78,11 @@ $(document).ready(function () {
                 console.log("[PDF] respuesta pscover.php OK =", response.OK, "| longitud HTML =", (response.HTML || '').length);
                 if (response.OK == 1) {
 
-                    var nombre = 'presupuesto-' + ($("#presu").val() || 'pscover') + '.pdf';
+                    // Título de la pestaña y nombre del archivo: PTO-XXXXXX-NOMBRE CLIENTE
+                    var codigoPdf = response.CODIGO || $("#presu").val() || 'PRESUPUESTO';
+                    var clientePdf = $.trim($("#nombre").val() || '').toUpperCase();
+                    var tituloPdf = (codigoPdf + (clientePdf ? '-' + clientePdf : '')).replace(/[\\\/:*?"<>|]+/g, '');
+                    var nombre = tituloPdf + '.pdf';
                     var margen = 10; // mm
                     var opciones = {
                         margin: margen,
@@ -95,9 +99,30 @@ $(document).ready(function () {
                         console.log("[PDF] html2pdf cargado, generando...");
                         if (pdfWindow) {
                             // Se muestra en el visor PDF del navegador: el usuario elige imprimir o descargar
-                            html2pdf().set(opciones).from(htmlPdf).outputPdf('blob').then(function (blob) {
+                            html2pdf().set(opciones).from(htmlPdf).toPdf().get('pdf').then(function (pdf) {
+                                pdf.setProperties({ title: tituloPdf });
+                                var blob = pdf.output('blob');
                                 console.log("[PDF] PDF generado,", blob.size, "bytes");
-                                pdfWindow.location.href = URL.createObjectURL(blob);
+                                var urlPdf = URL.createObjectURL(blob);
+
+                                // Página con el título en la pestaña, botón de descarga con el nombre correcto
+                                // y el visor PDF del navegador (desde ahí también se imprime)
+                                var doc = pdfWindow.document;
+                                doc.open();
+                                doc.write('<!doctype html><html><head><meta charset="utf-8"><title></title>' +
+                                    '<style>html,body{margin:0;height:100%;font-family:Arial,sans-serif;}' +
+                                    '.barra{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#323639;color:#fff;font-size:14px;}' +
+                                    '.barra a{background:#3dadf1;color:#fff;text-decoration:none;padding:7px 14px;border-radius:4px;font-weight:bold;}' +
+                                    'iframe{border:0;width:100%;height:calc(100% - 44px);display:block;}</style></head>' +
+                                    '<body><div class="barra"><span id="titulo"></span><a id="descargar">Descargar PDF</a></div>' +
+                                    '<iframe id="visor"></iframe></body></html>');
+                                doc.close();
+                                doc.title = tituloPdf;
+                                doc.getElementById('titulo').textContent = tituloPdf;
+                                var enlace = doc.getElementById('descargar');
+                                enlace.href = urlPdf;
+                                enlace.download = nombre;
+                                doc.getElementById('visor').src = urlPdf;
                             }).catch(function (e) {
                                 console.error(e);
                                 pdfWindow.close();

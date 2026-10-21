@@ -110,7 +110,8 @@ function pdfFirma($codigoPresupuesto)
         </div>';
 }
 
-function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
+// $codigoSalida recibe el código del presupuesto (PTO-...) para el título y el nombre del PDF
+function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal, &$codigoSalida = null)
 {
     $codigo = mysqli_real_escape_string($conn, $presupuesto);
 
@@ -126,6 +127,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
     $row = mysqli_fetch_object($res);
 
     $codigoPresupuesto = !empty($row->CODIGO) ? $row->CODIGO : $row->CODIGO_WEB;
+    $codigoSalida = $codigoPresupuesto;
     $titulo = trim((string) $row->DESCRIPCION_CLIENTE) !== '' ? $row->DESCRIPCION_CLIENTE : $row->TITULO;
     $formaPago = trim((string) $row->FORMADEPAGO) !== '' ? $row->FORMADEPAGO : '50% transferencia y 50% antes de la entrega';
 

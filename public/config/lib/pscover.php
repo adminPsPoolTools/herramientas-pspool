@@ -170,11 +170,13 @@ switch ($tipo) {
     case 3: // Imprimir el presupuesto (PDF generado en el navegador con html2pdf)
         $presupuesto       = $_POST['PRESUPUESTO'];
         $datosClienteFinal = $_POST['DATOSPRINT'];
-        $html = obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal);
+        $codigoPdf = '';
+        $html = obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal, $codigoPdf);
 
         $result = array(
             "OK" => 1,
             "TEST" => $presupuesto,
+            "CODIGO" => $codigoPdf,
             "HTML" => "$html"
         );
 
