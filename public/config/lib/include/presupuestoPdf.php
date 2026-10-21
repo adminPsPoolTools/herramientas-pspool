@@ -68,6 +68,15 @@ function pdfFilasLineas($lineas, $multiplicarCantidad)
                 <td style="width:36px; padding-left:4px; font-weight:bold; vertical-align:middle;">' . pdfTexto($row->ARTICULO) . '</td>
                 <td style="font-weight:bold; vertical-align:middle;">' . pdfTexto($row->DESCARTICULO) . '</td>
             </tr>';
+
+        // 7460 = el cliente ha elegido sin instalación (ver insertarInstalacion en utilidades.php)
+        if ((string) $row->ARTICULO === '7460') {
+            $html .= '
+            <tr style="font-size:10px;">
+                <td colspan="2"></td>
+                <td style="padding-top:3px;">Instalaci&oacute;n no incluida en el precio</td>
+            </tr>';
+        }
     }
 
     return array($html, $pvp);
