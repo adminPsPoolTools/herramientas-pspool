@@ -63,7 +63,7 @@ function pdfFilasLineas($lineas, $multiplicarCantidad)
 
         $html .= '
             <tr><td colspan="3" style="height:9px;"></td></tr>
-            <tr style="font-size:6.5px;">
+            <tr style="font-size:9px;">
                 <td style="width:16px; background:#d9d9d9; text-align:center; vertical-align:middle; font-weight:bold; padding:4px 0;">' . pdfTexto($row->LINEA) . '</td>
                 <td style="width:36px; padding-left:4px; font-weight:bold; vertical-align:middle;">' . pdfTexto($row->ARTICULO) . '</td>
                 <td style="font-weight:bold; vertical-align:middle;">' . pdfTexto($row->DESCARTICULO) . '</td>
@@ -185,7 +185,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
             </table>
         </div>
 
-        <div style="background:' . $gris . '; text-align:center; font-weight:bold; font-style:italic; font-size:6.5px; padding:3px; margin-top:4px;">' . pdfTexto($titulo) . '</div>
+        <div style="background:' . $gris . '; text-align:center; font-weight:bold; font-style:italic; font-size:9px; padding:3px; margin-top:4px;">' . pdfTexto($titulo) . '</div>
 
         <table style="width:100%; border-collapse:collapse; margin-top:4px;">
             <tr style="background:' . $gris . '; font-weight:bold;">
@@ -251,7 +251,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
     <div class="html2pdf__page-break"></div>
 
     <!-- ===================== PÁGINA 2 ===================== -->
-    <div class="pdf-cond" style="font-size:7px; line-height:1.5; min-height:1040px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pdf-cond" style="font-size:9px; line-height:1.4; min-height:1040px; display:flex; flex-direction:column; justify-content:space-between;">
         ' . pdfCabeceraCondiciones(2) . '
         <div><b>GARANT&Iacute;AS</b>
         <ul style="margin:3px 0 0; padding-left:18px;">
@@ -302,7 +302,7 @@ function obtenerPresupuestoPdf($conn, $presupuesto, $datosClienteFinal)
     <div class="html2pdf__page-break"></div>
 
     <!-- ===================== PÁGINA 3 ===================== -->
-    <div class="pdf-cond" style="font-size:7px; line-height:1.5; min-height:1040px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pdf-cond" style="font-size:9px; line-height:1.4; min-height:1040px; display:flex; flex-direction:column; justify-content:space-between;">
         ' . pdfCabeceraCondiciones(3) . '
         <div><b>PLAZOS</b>
         <ul style="margin:3px 0 0; padding-left:18px;">
