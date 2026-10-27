@@ -792,12 +792,12 @@ function calcularTerra($conn, $anchoTotal, $largoTotal, $modelo, $tipoPiscina, $
     }
 
 
-    // Obtener los valores superiores de ancho y largo
+    // Obtener los valores superiores de ancho y largo (null si la medida se sale de la tabla)
     $anchoSuperior = getNextOrExact(array_keys($datosTerra), $anchoTotal);
-    $largoSuperior = getNextOrExact(array_keys($datosTerra[$anchoSuperior]), $largoTotal);
+    $largoSuperior = ($anchoSuperior !== null) ? getNextOrExact(array_keys($datosTerra[$anchoSuperior]), $largoTotal) : null;
 
     // Validar si los valores existen en la tabla
-    if (isset($datosTerra[$anchoSuperior][$largoSuperior])) {
+    if ($largoSuperior !== null && isset($datosTerra[$anchoSuperior][$largoSuperior])) {
         $result["VALOR"] = $datosTerra[$anchoSuperior][$largoSuperior];
         $result["OK"] = true;
         $resultadoMotor = $result["VALOR"];
@@ -823,6 +823,8 @@ function calcularTerra($conn, $anchoTotal, $largoTotal, $modelo, $tipoPiscina, $
         $result["PRECIO"]   = $mrow->PRECIO;
         $result["OK"]       = true;
     } else {
+        // No hay motor para esa fuerza: el cálculo no puede seguir
+        $result["OK"] = false;
         $sql = "SELECT COUNT(CODIGO) AS N_ROWS
                 FROM ARTICULOS
                 WHERE ANCHURA >= $anchoSuperior
