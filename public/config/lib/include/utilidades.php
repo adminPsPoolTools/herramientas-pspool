@@ -771,9 +771,9 @@ function calcularTerra($conn, $anchoTotal, $largoTotal, $modelo, $tipoPiscina, $
         "ERROR" => ""
     ];
 
-    $metros2 = ceil($largoTotal * $anchoTotal) / 1000;
     if ($suptipo == "TERRA_SOLAR") {
-        if ($anchoTotal <= 500 | $metros2 < 320) {
+        // Límites de la TERRA SOLAR (motor 120 Nm): hasta 600 cm de ancho; el largo máximo (1500 cm) lo marca la tabla
+        if ($anchoTotal <= 600) {
             $datosTerra170Json = file_get_contents('datosTerraSolar140.json');
             $datosTerra = json_decode($datosTerra170Json, true);
         } else {
